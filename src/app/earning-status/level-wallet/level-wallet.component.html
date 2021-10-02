@@ -1,0 +1,52 @@
+<div class="header bg-primary pb-1">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Level Wallet Transaction</h6>
+          <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item active"><a href="#">Transaction</a></li>
+
+            </ol>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="card m-b-30">
+      <div class="card-header border-0 mb-0">
+          <h3 class="mb-0">Level Wallet Transaction</h3>
+      </div>
+      <div class="card-block" style="margin-left: 20px;margin-right: 20px;">
+          <div class="table-responsive">
+              <table id="referral" class="table align-items-center table-flush">
+                  <thead>
+                      <tr class="thead-light" role="row">
+                          <th *ngFor="let header of bodydata['headers']" [hidden]="(header==='CountryFlag')"
+                              class="sorting_disabled" rowspan="1" colspan="1" style="width: 157.2px;">{{header}}
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr role="row" class="odd" *ngFor="let row of bodydata['records']">
+                          <td *ngFor="let data of row | paginate:{itemsPerPage:10,currentPage: page,id: 1,totalItems: bodydata['recordsTotal']}"
+                              [hidden]="row[12]===data">
+                              {{data}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <pagination-controls class="my-pagination" (pageChange)="page = $event" *ngIf="bodydata['records']"
+                  directionLinks="true" autoHide="false" previousLabel="Previous" nextLabel="Next" [id]="1"
+                  (pageChange)="onPageChange($event)">
+              </pagination-controls>
+              <div class="card-body card-dashboard text-center" *ngIf="tableview['failmessage']">
+                  <span class="table-record-not-found">{{ tableview['failmessage'] }}</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

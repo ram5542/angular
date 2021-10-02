@@ -1,0 +1,257 @@
+<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+	<div class="scrollbar-inner">
+		<div class="sidenav-header d-flex align-items-center">
+			<a class="navbar-brand" href="/dashboard">
+				<img class="img-responsive" src="assets/img/myfunjo.png" alt="logo"></a>
+			<div class="ml-auto">
+				<div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+					<div class="sidenav-toggler-inner"><i class="sidenav-toggler-line"></i><i
+							class="sidenav-toggler-line"></i><i class="sidenav-toggler-line"></i></div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-inner">
+			<div class="collapse navbar-collapse" id="sidenav-collapse-main">
+
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active dashboard" routerLink="/dashboard"><i class="fas fa-home"></i><span
+								class="nav-link-text">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-profile" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-profile"><i class="far fa-id-badge"></i><span
+								class="nav-link-text">Profile</span></a>
+						<div class="collapse" id="navbar-profile">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/profile/user-profile" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span
+											class="sidenav-normal">Profile</span></a></li>
+								<li class="nav-item"><a routerLink="/profile/change-password" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Change
+											Password</span></a></li>
+
+							</ul>
+						</div>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-my-team" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-my-team"><i class="fab fa-angellist"></i><span
+								class="nav-link-text">My Funjo
+								Community</span></a>
+						<div class="collapse" id="navbar-my-team">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/referrals" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">My Referred
+											Community</span></a></li>
+
+								<li class="nav-item"><a routerLink="/downline" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">My Community
+											in Level</span></a></li>
+
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-topup" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-workdetails"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">Topup
+								Funjo</span></a>
+						<div class="collapse" id="navbar-topup">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/topup-funjo" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Topup by
+											Funjo</span></a></li>
+								<li class="nav-item"><a routerLink="/package-summary" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Package
+											Summary</span></a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-usdt" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-usdt"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">USDT Wallet</span></a>
+						<div class="collapse" id="navbar-usdt">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/app-add-fund-usdt" class="nav-link"><span
+											class="sidenav-mini-icon">A </span><span class="sidenav-normal">Add Fund</span></a></li>
+								<li class="nav-item"><a routerLink="/usdt-transactions" class="nav-link"><span
+											class="sidenav-mini-icon">A </span><span class="sidenav-normal">Add Fund USDT History</span></a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-workdetails" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-workdetails"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">Earning
+								Status</span></a>
+						<div class="collapse" id="navbar-workdetails">
+							<ul class="nav nav-sm flex-column">
+								<!-- <li class="nav-item"><a routerLink="/growth-wallet" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Growth
+											Wallet</span></a></li> -->
+								<li class="nav-item"><a routerLink="/level-wallet" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Level
+											Wallet</span></a></li>
+								<li class="nav-item"><a routerLink="/referral-wallet" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Referral
+											Wallet</span></a></li>
+								<!-- <li class="nav-item"><a routerLink="/token-bonus" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Token
+											Bonus</span></a></li> -->
+							</ul>
+						</div>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-funjo" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-workdetails"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">My Funjo
+								Wallet</span></a>
+						<div class="collapse" id="navbar-funjo">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/get-funjo-balance" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Get Funjo
+											Balance</span></a></li>
+								<li class="nav-item"><a routerLink="/deposit-summary" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Deposit
+											Summary</span></a></li>
+
+								<li class="nav-item"><a routerLink="/funjo-transfer" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Funjo
+											Transfer</span></a></li>
+								<li class="nav-item"><a routerLink="/funjo-transaction" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Funjo
+											Transaction</span></a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-withdrawal" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-withdrawal"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">My Income Wallet</span></a>
+						<div class="collapse" id="navbar-withdrawal">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/transfer-to-funjo" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Transfer To
+											Funjo</span></a></li>
+								<li class="nav-item">
+									<a routerLink="/withdraw" class="nav-link"><span class="sidenav-mini-icon">P
+										</span><span class="sidenav-normal">Funjo Withdrawal</span></a>
+								</li>
+								<li class="nav-item">
+									<a routerLink="/main-wallet-transactions" class="nav-link"><span
+											class="sidenav-mini-icon">T </span><span class="sidenav-normal">Transaction</span></a>
+								</li>
+
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-touch" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-withdrawal"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">Touch
+								Token</span></a>
+						<div class="collapse" id="navbar-touch">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/token-transaction" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Token
+											Transaction</span></a></li>
+								<li class="nav-item"><a routerLink="/touch-withdrawal" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Token Withdrawal</span></a></li>
+								<!-- <li class="nav-item"><a routerLink="#" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Withdrawal
+											History</span></a></li> -->
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-MazumaCoin" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-withdrawal"><i class="fas fa-wallet"></i><span
+								class="nav-link-text">Mazuma Coin</span></a>
+						<div class="collapse" id="navbar-MazumaCoin">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/mazuma-coin-transaction" class="nav-link"><span
+											class="sidenav-mini-icon">M </span><span class="sidenav-normal">Mazuma Coin
+											Transaction</span></a></li>
+								<li class="nav-item"><a routerLink="/mazuma-coin-withdrawal" class="nav-link"><span
+											class="sidenav-mini-icon">M </span><span class="sidenav-normal">Mazuma Coin Withdrawal</span></a></li>
+								<!-- <li class="nav-item"><a routerLink="#" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Withdrawal
+											History</span></a></li> -->
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#navbar-ticket" data-toggle="collapse" role="button"
+							aria-expanded="false" aria-controls="navbar-ticket"><i class="fas fa-ticket-alt"></i><span
+								class="nav-link-text">Ticket</span></a>
+						<div class="collapse" id="navbar-ticket">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item"><a routerLink="/support/submit-query" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">New
+											Ticket</span></a></li>
+								<li class="nav-item"><a routerLink="/support/ticket-summary" class="nav-link"><span
+											class="sidenav-mini-icon">P </span><span class="sidenav-normal">Ticket
+											Summary</span></a></li>
+								<!-- <li class="nav-item"><a routerLink="/support/ticket-history/:id"
+										class="nav-link"><span class="sidenav-mini-icon">P </span><span
+											class="sidenav-normal">Closed</span></a></li> -->
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item"><a class="nav-link active-pro" (click)="onLogout()"
+							href="javascript:void(0)"><i class="ni ni-send text-primary"></i><span
+								class="nav-link-text">Logout</span></a></li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</nav>
+<div class="main-content" id="panel">
+	<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav align-items-center ml-md-auto">
+					<li class="nav-item d-xl-none">
+						<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+							data-target="#sidenav-main">
+							<div class="sidenav-toggler-inner"><i class="sidenav-toggler-line"></i><i
+									class="sidenav-toggler-line"></i><i class="sidenav-toggler-line"></i></div>
+						</div>
+					</li>
+					<li class="nav-item text-white mr-3" *ngIf="dashboard['userdata']">
+						Account Id : {{dashboard['userdata']['userid']}}
+					</li>
+				</ul>
+				<ul class="navbar-nav align-items-center ml-auto ml-md-0">
+					<li class="nav-item dropdown">
+						<a class="nav-link pr-0" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<div class="media align-items-center">
+								<span class="avatar avatar-sm rounded-circle">
+									<img alt="Image placeholder" src="assets/img/theme/avatar.png" /></span>
+								<div class="media-body ml-2 d-none d-lg-block">
+									<span class="mb-0 text-sm font-weight-bold">
+									</span>
+								</div>
+							</div>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0)" (click)="onLogout()" class="dropdown-item"><i
+									class="ni ni-user-run"></i><span>Logout</span></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="main-contant">
+		<router-outlet></router-outlet>
+	</div>
+
+</div>

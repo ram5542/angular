@@ -1,0 +1,97 @@
+<div class="main-content">
+  <div class="header bg-primary">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Level Team</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active"><a href="#">Level Team</a></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 m-b-30">
+        <div class="card m-b-30">
+          <div class="card-header border-0 mb-0">
+            <div class="row">
+              <div class="col-md-2">
+                  <h3 class="mb-0">Level Team</h3>
+              </div>
+              <div class="offset-md-1 col-md-3" *ngIf="referalAllvalue">
+                  <h3 class="mb-0">Total Records <span class="badge badge-warning badge-pill">{{referalAllvalue.totalrows}}</span> </h3>
+              </div>
+              <div class="col-md-3" *ngIf="referalAllvalue">
+                  <h3 class="mb-0">Total Stack <span class="badge badge-warning badge-pill">{{referalAllvalue.totalinvestment}}</span></h3>
+              </div>
+              <div class="col-md-3" *ngIf="referalAllvalue">
+                  <h3 class="mb-0">Total Active <span class="badge badge-warning badge-pill">{{referalAllvalue.totalpaid}}</span></h3>
+              </div>
+          </div>
+          </div>
+          <div class="card-block" style="margin-left: 20px;margin-right: 20px;">
+            <div class="form-group ">
+              <form class="row" [formGroup]="searchForm" (ngSubmit)='serch()'>
+                <label for="staticEmail" class="col- col-form-label mx-2">Select Filter</label>
+                <div class="col-">
+                  <select class="form-control" formControlName="level">
+                    <option selected value="0">All</option>
+                    <option *ngFor="let arr  of arraylevel; let i = index"
+                      [value]="arr">Level {{arr}}</option>
+                  </select>
+                </div>
+                <div class="col- mx-2">
+                  <input class="form-control" placeholder="Login Id" formControlName="loginid" />
+                </div>
+                <div class="col- mx-2">
+                  <!-- <label for="date">From date</label> -->
+                  <input type="date" id="date" class="form-control" formControlName="fromdate">
+                </div>
+                <div class="col- mx-2">
+                  <!-- <label for="date">To date</label> -->
+                  <input type="date" class="form-control" id="date" formControlName="todate">
+                </div>
+                <div class="col- mx-2">
+                  <button class="btn btn-primary" type="submit">search</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <div class="loader" style="margin: 10% auto;" *ngIf="!data && !msg"></div>
+                  <table class="table align-items-center table-flush">
+                    <tbody>
+                      <tr class="thead-light">
+                        <td *ngFor="let headerKey of keys">{{headerKey}}</td>
+                      </tr>
+                      <tr [ngClass] ="row['Total Stack'] == 0?'red':'green'" *ngFor="let row of data | paginate: { itemsPerPage: bodydata['length'], currentPage: page ,
+                                    totalItems:itemsTotal}">
+                        <td *ngFor="let headerKey of keys" class="padding-tdtext-center">
+                         {{row[headerKey]}}
+                        </td>
+                      </tr>
+                      <tr style="text-align: center;color: red; margin-top: 20px;" *ngIf="msg">
+                        <td colspan="12">{{msg}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls *ngIf="itemsTotal && !msg" class="color" (pageChange)="onPageChange($event)"
+                    (pageChange)="page = $event"></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,286 @@
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Deposit via Funjo Coin</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item active"><a href="#">Deposit via Funjo Coin</a></li>
+
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Deposit via Funjo Coin</h3>
+        </div>
+        <div class="card-block  pd-20">
+          <div class="card mb-4" *ngIf="firstSection">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6 offset-3">
+                  <div class="info-box">
+                      <div class="card-body">
+                        <p class="text-center">Fund Wallet Balance</p>
+                        <div class="form-group">
+                          <input type="text" class="form-control" value="Funjo {{walletbalance}}" style="text-align: center">
+                        </div>
+                      </div>
+                    <div class="card-body">
+                      <p class="text-center">You can make purchase using your choose method.</p>
+                      <form [formGroup]="addfund" class="ng-untouched ng-pristine ng-invalid" novalidate="" style="margin-bottom: 0;">
+                        <div class="form-group">
+                          <input formControlName="amount" placeholder="Enter Amount in Funjo Coin" type="text" class="form-control">
+                          <div *ngIf="submitted && f.amount.errors" class="errorMsg">
+                              <div *ngIf="f.amount.errors.required">This field is required</div>
+                              <div [hidden]="!f.amount.errors.patternAmountInvalid">
+                                  Allow only a number (Eight decimal point)
+                              </div>
+                          </div>
+                          <div class="minamount">(Enter Minimum 10 Funjo)
+                          </div>
+                        </div>
+                        <input type="submit" value="Make Payment" (click)="onAddFund()" class="btn btn-primary btn-rounded pull-left">
+                      </form>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 offset-3">
+                  <p>
+                  </p>
+                  <h3>Instructions:</h3>
+                  - Please do not REFRESH / STOP / BACK the Links, this can result in failure of Transaction<br>
+                  - Please do not click Unless you are ready with your Funjo App<br>
+                  - We generate Funjo Address in encrypted form and it will change everytime you open this.<br>
+                  - If you do not see any QRCode then please do not Scan.<br>
+                  - Please do not take long to scan the QRCode or Close the window.<br>
+                  - Once the QRCode get scanned and you approve, a Receipt Confirmation will be seen on the screen.<br>
+                  - In case the receipt doesn't appear after sending the Funjos, Kindly contact your Director / Support
+                  <p></p>
+                  <p>
+                  </p>
+                  <h3>WARNING:</h3>
+                  - If you fails to follow above instructions then you may loss your Funjos.
+                  <p></p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="card" *ngIf="secondSection">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Confirm Your Funjo Payment</h3>
+            </div>
+            <div class="card-block">
+
+                <div style="text-align: center;">
+                    <div>
+                        
+                        <div class="form-group">
+                            <span>{{coinaddress}}</span>&nbsp;
+                                                
+                        </div>
+                        <div class="form-group">
+                            <span *ngIf="fundData" id="ContentPlaceHolder1_ctl00_lit_payment1">Funjo {{fundData['amount']}}</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea #transno id="transno"  rows="2" cols="20"  class="txtbox" placeholder="Enter Your Transaction Details" alt="blank"></textarea>
+                            <span style="color:Red;display:none;">Transaction Id</span>
+                        </div>
+                        <div class="form-group">
+
+                            <input type="submit" (click)="updatetransactionnumber(transno.value)" value="Click here to Submit" class="btn btn-primary btn-rounded pull-left">
+                            <br>
+                            <span style="color:Red;">Enter your Funjo address</span>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                </p><h3>Instructions:</h3>
+                                - Please do not REFRESH / STOP / BACK the Links, this can result in failure of Transaction<br>
+                                - Please do not click Unless you are ready with your Funjo App<br>
+                                - We generate Funjo Address in encrypted form and it will change everytime you open this.<br>
+                                - If you do not see any QRCode then please do not Scan.<br>
+                                - Please do not take long to scan the QRCode or Close the window.<br>
+                                - Once the QRCode get scanned and you approve, a Receipt Confirmation will be seen on the screen.<br>
+                                - In case the receipt doesn't appear after sending the Funjos, Kindly contact your support@myfunjo.io
+                            <p></p>
+                            <p>
+                                </p><h3>WARNING:</h3>
+                                - if you fail to follow above mentioned instruction then you may lose your Funjo.
+                            <p></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <!-- <div class="card px-3 py-3" *ngIf="secondSection">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mt-5 gr-3">
+                        <div class="card-body">
+                            <div class="corona-count-content">
+                                <h2 class="text-white"><span class="cases-no infected">$ {{addfundamount}}</span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 wallet_balance_dash">
+
+                    <h4 class="text-center mt-2"><span class="countdown">19:20</span></h4>
+
+                    <div class="qr-gif ng-star-inserted">
+                        <div class="roller_loader primary_roller_loader" *ngIf="!qr">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="qr-gif ng-star-inserted" *ngIf="qr">
+                            <img class="qr-img ng-star-inserted" *ngIf="qr" class="qr-img" src="{{qr}}">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-body card-6-6">
+                        <p class="text-center">Do not send funds from an exchange .</p>
+                        <hr>
+                        <p class="text-center">Your payment will be confirmed after it receives 1 confirmation on the <span *ngIf="coinname=='btc'">Bitcoin</span> <span *ngIf="coinname=='eth'">Ethereum</span> network
+                        </p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 pull-left">
+                    <h6>Created 20 minutes ago</h6>
+                    <button class="btn float-left btn-primary mb-10" (click)="onBackSecond();"><i
+                    class="fa fa-close"></i>
+                Cancel</button>
+                </div>
+                <div class="col-md-8 ">
+                    <h6 style="text-align: right">Order ID # {{invoiceno}} </h6>
+                    <a href="javascript:void(0)">
+                        <button type="button" class="btn  btn-primary float-right mb-10" (click)="onSubmitSecond();">
+                    <i class="fa fa-arrow-right"></i> Submit</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card" *ngIf="thirdSection">
+            <div class="rows">
+                <div class="col-md-12 col-md-offset-2">
+                    <div class="row bg_card ">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="card shadow-lg p-3 mb-5 gr-3 rounded">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="text-center">
+                                            <h3 class="fw-600 p-t-20 text-white">{{btcvalue}} {{ coinname | uppercase }}</h3>
+                                            <h4 class="fw-600 mb-0 text-white">$ {{addfundamount}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="text-center paid_box" *ngIf="confirmationsFlagTwo">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <h4 class="text-center">Paid and Confirmed</h4>
+                            </div>
+
+                            <div class="text-center unconf_paid_box ng-star-inserted" style="margin-top: 0px;" *ngIf="confirmationsFlagOne">
+                                <i aria-hidden="true" class="fa fa-check-circle"></i>
+                                <h4 class="text-center">Paid and Unconfirmed</h4>
+                            </div>
+
+                            <div class="text-center unconf_paid_box_message ng-star-inserted" style="margin-top: 0px;" *ngIf="statusMessageFlag">
+                                <i aria-hidden="true" class="fa fa-times-circle"></i>
+                                <h4 class="text-center">{{statusMessage}}</h4>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row bg_card">
+                        <div class="col-md-12">
+                            <div class="trans_box">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="trans_box_text">
+                                            <h5>CONFIRMATION: {{confirmations}}/{{totalconfirmationsrequired}}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-right mt-2">{{createdate}}</p>
+                        </div>
+                    </div>
+                    <div class="row bg_card">
+                        <div class="col-md-12">
+                            <div class="text-right charity_box">
+                                <h5>AMOUNT LEFT TO PAY: {{addfundamount}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row bg_card">
+                        <div class="col-md-12">
+                            <div class="text-right charity_box footer_box">
+                                <h5 class="text-left"> </h5>
+                                <h6>Order ID # {{invoiceno}} </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" *ngIf="fiurthSection">
+            <div class="row bg_card ">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card shadow-lg p-3 mb-5 gr-r rounded">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <div class="text-center">
+                                    <p class="text-muted fw-600 mb-0">$ {{addfundamount}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="text-center unpaid_box">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <h4 class="text-center">This order has expired</h4>
+
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

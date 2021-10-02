@@ -1,0 +1,331 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid" *ngIf="medata">
+        <div class="header-body">
+            <div class="row mt-5">
+                <div class="col-xl-6 mobi-mb-20">
+                    <a href="#">
+                        <div class="dash_banner dash_rank">
+                            <h3>Current Funjo</h3>
+                            <img src="assets/img/icon-lo.png" class="rank_imgqua">
+                            <h5>Funjo Balance :
+                                {{medata['FundWalletBalance']}}</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xl-6">
+                    <a href="#">
+                        <div class="dash_banner dash_rank">
+                            <h3>Withdrawal Funjo</h3>
+                            <img src="assets/img/icon-lo.png" class="rank_imgqua">
+                            <h5>Funjo Income:
+                                {{medata['WalletBalance']}}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-xl-6 mobi-mb-20">
+                    <form>
+                        <div class="dash_banner dash_rank">
+                            <h3>Stake Funjo</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Enter Funjo to be stake"
+                                        #amount>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input type="submit" value="Enter Funjo" class="btn btn-success"
+                                        (click)="topupfunjo(amount.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xl-6">
+                    <form>
+                        <div class="dash_banner dash_rank">
+                            <h3>Withdrawal Funjo</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Withdrawal Funjo" #amount1>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input type="submit" value="Enter Funjo" class="btn btn-success"
+                                        (click)="withdraw(amount1.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-xl-7">
+                    <div class="card">
+                        <div class="card-body border-0" *ngIf="medata">
+                            <div class="row align-items-left">
+                                <div class="col-md-10">
+                                    <h3 class="mb-0">Referral Link</h3>
+                                    <input type="text" class="form-control" id="firstinput" [value]="medata['reflink1']"
+                                        (focus)="abc('#firstinput')">
+                                </div>
+                                <div class="col text-right mt-4"><a (click)="copyToClipboard('#firstinput')"
+                                        class="btn btn-lg btn-primary">Copy</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="card edit-card card_edit">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input type="text" class="form-control cs-form" id="firstinput"
+                                    [value]="medata.reflink1" (focus)="abc('#firstinput')">
+                                <label>Left Link</label>
+                            </div>
+                            <div class="col-">
+                                <button class="btn btn-fill btn-facebook edit-copy-button"
+                                    (click)="copyToClipboard('#firstinput')">Copy</button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="col-xl-5">
+                    <div class="card">
+                        <div class="card-body border-0">
+                            <div class="row align-items-left">
+                                <div class="col">
+                                    <h3 class="mb-0">Earned Funjo: <span id="demo">{{medata['eranedfunjo']}}</span>%
+                                    </h3>
+                                    <div class="slidecontainer">
+                                        <input type="range" min="0" max="250" step="0.1"
+                                            value="{{medata['eranedfunjo']}}" class="slider" id="myRange"
+                                            style="width:100%;" disabled="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Growth</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['totalroiincome']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Income Balance</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['WalletBalance']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">My Total Staking</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['totalinvestment']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col" *ngIf="medata['royaltylevel'] == 1">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Dubai Summit</h5>
+                                    <span class="h2 font-weight-bold mb-0" *ngIf="medata['royaltylevel'] == 1">
+                                        Achieved</span>
+                                </div>
+                                <div class="col" *ngIf="medata['royaltylevel'] == 0">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Dubai Summit</h5>
+                                    <span class="h3 font-weight-bold mb-0" *ngIf="medata['royaltylevel'] == 0">
+                                            Not Achieved </span>
+                                </div>
+                                <div class="col px-0" *ngIf="medata['royaltylevel'] == 0">
+                                    <span class="h4 font-weight-bold mb-0" *ngIf="medata['royaltylevel'] == 0">
+                                        Total Team Business <span class="badge badge-danger">{{medata['totrewardbusiness']}}</span></span>
+                                </div>
+                                <div class="col-auto" *ngIf="medata['royaltylevel'] == 1">
+                                    <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i class="fab fa-avianex"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Referral Income</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['totalreferralincome']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Level Income</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['totallevelincome']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total NON Working Income</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['totalroiincome']}} </span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Working Income</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{TOTALWORKINGINCOME}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Touch Token</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['touchtocken']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-stats">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">mazuma Coin</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        {{medata['mazumacoin']}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i
+                                            class="fas fa-money-check-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-stats">
+                        <div class="card-header border-0 "><h3 class="mb-0">Reward Status User</h3></div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="referral" class="table align-items-center table-flush" style="border-collapse:collapse;">
+                                    <thead>
+                                        <tr class="thead-light" role="row">
+                                            <th class="sorting_disabled" *ngFor="let header of tabledata['headers']" [hidden]="(header==='CountryFlag')" rowspan="1" colspan="1" style="width: 157.2px;">{{header}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of tabledata['records']">
+                                            <td *ngFor="let data of row"
+                                                [hidden]="row[12]===data">                                   
+                                                {{data}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="card-body card-dashboard text-center" *ngIf="tableview['failmessage']">
+                                    <span class="table-record-not-found">{{ tableview['failmessage'] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

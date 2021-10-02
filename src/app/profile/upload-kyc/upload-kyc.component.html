@@ -1,0 +1,158 @@
+
+<div class="main-content">
+	<div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-name-bg">
+                Upload KYC
+            </div>
+            <div class=" card-body">
+                <div class="row">
+                    <div class="col-md-12 box-center">
+                        <form  [formGroup]="bankForm">
+                                <div class="form-body">
+                                    <div class="row m-v-30">
+                                        <div class="col-lg-6 text-center text-sm-left">
+                                        <div class="form-group" [ngClass]="displayFieldCss(bankForm, 'bankname')">
+                                            <label class="control-label">Bank Name:</label>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Bank Name"  id="bankname" formControlName="bankname">
+                                            <app-field-error-display [displayError]="isFieldValid(bankForm, 'bankname')" errorMsg="Bank Name is required"></app-field-error-display>
+                                        </div>
+                                        <div class="form-group" [ngClass]="displayFieldCss(bankForm, 'acno')">
+                                            <label class="control-label">Account Number:</label>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Account Number" formControlName="acno" id="acno">
+                                            <app-field-error-display [displayError]="isFieldValid(bankForm, 'acno')" errorMsg="Account Number is required"></app-field-error-display>
+                                        </div>
+                                        <div class="form-group" [ngClass]="displayFieldCss(bankForm, 'ifscode')">
+                                            <label class="control-label">IFSC Code:</label>
+                                            <input type="text" class="form-control form-control-sm" placeholder="IFSC Code" id="ifscode" formControlName="ifscode">
+                                            <app-field-error-display [displayError]="isFieldValid(bankForm, 'ifscode')" errorMsg="IFSC Code is required"></app-field-error-display>
+                                        </div>
+                                        </div>
+                                        <div class="col-lg-6  text-center text-sm-left">
+                                            <div class="form-group" [ngClass]="displayFieldCss(bankForm, 'branchname')"> 
+                                                <label class="control-label">Branch Name:</label>
+                                                <input type="text" class="form-control form-control-sm" placeholder="Branch Name" formControlName="branchname" id="branchname">
+                                                <app-field-error-display [displayError]="isFieldValid(bankForm, 'branchname')" errorMsg="Branch Name is required"></app-field-error-display>
+                                            </div>
+                                            <div class="form-group"  [ngClass]="displayFieldCss(bankForm, 'acholdername')">
+                                            <label class="control-label">Account Holder Name:</label>
+                                            <input type="text" class="form-control form-control-sm" id="acholdername" placeholder="Account Holder Name" formControlName="acholdername">
+                                            <app-field-error-display [displayError]="isFieldValid(bankForm, 'acholdername')" errorMsg="Account Holder Name is required"></app-field-error-display>
+                                        </div>
+                                        <div class="form-group" [ngClass]="displayFieldCss(bankForm, 'panno')">
+                                            <label class="control-label">Pan No:</label>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Pan No" id="panno" formControlName="panno">
+                                            <app-field-error-display [displayError]="isFieldValid(bankForm, 'panno')" errorMsg="Pan No is required"></app-field-error-display>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row clearfix file_manager kycsection">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="card">
+                                            <div class="header kyc-header">
+                                                <h2> Pan Card</h2>
+                                            </div>
+                                            <div class="file">
+                                                <a href="javascript:void(0);">
+                                                    <div class="hover" style="display: block;">
+                                                        <button type="button" class="btn btn-icon btn-icon-mini btn-round kyc_doc_upload" [hidden]="!fileflag">
+                                                            <i class="fa fa-edit"></i>
+                                                            <input type="file" class="form-control edit-kyc-img" accept="image/*" (change)="fileChange(panimg,'pancard')"  #panimg *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'">
+                                                        </button>
+    
+                                                    </div>
+                                                    <div class="icon">
+                                                        <span *ngIf="!kycdata['docimgshowpan']"><img width="150" src="assets/img/no-image.png" class="img-responsive kyc-img1" *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'" [hidden]="!fileflag"></span>
+                                                        <span *ngIf="kycdata['docimgshowpan']"><img [src]="kycdata['docimgshowpan']" class="img-responsive kyc-img" *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'" [hidden]="!fileflag"></span>
+                                                        <img [src]="kycimg['pan']" class="img-responsive kyc-img zoom" *ngIf="kycimg['status']?.status=='Approval Pending' || kycimg['status']?.status=='Approved'">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="card">
+                                            <div class="header kyc-header">
+                                                <h2> Address Card</h2>
+                                            </div>
+                                            <div class="file">
+                                                <a href="javascript:void(0);">
+                                                    <div class="hover" style="display: block;">
+                                                        <button type="button" class="btn btn-icon btn-icon-mini btn-round kyc_doc_upload" [hidden]="!fileflag">
+                                                            <i class="fa fa-edit"></i>
+                                                            <input type="file" class="form-control edit-kyc-img" accept="image/*" (change)="fileChange(addressimg,'address')"  #addressimg *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'">
+                                                        </button>
+    
+                                                    </div>
+                                            <div class="icon">
+                                                <span *ngIf="!kycdata['docimgshowaddress']"><img width="150" src="assets/img/no-image.png" class="img-responsive kyc-img1" *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'" [hidden]="!fileflag"></span>
+                                                <span *ngIf="kycdata['docimgshowaddress']"><img [src]="kycdata['docimgshowaddress']" class="img-responsive kyc-img" *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'" [hidden]="!fileflag"></span>
+                                                <img [src]="kycimg['address']" class="img-responsive kyc-img zoom" *ngIf="kycimg['status']?.status=='Approval Pending' || kycimg['status']?.status=='Approved'">
+                                            </div>
+                                                </a>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="card">
+                                            <div class="header kyc-header">
+                                                <h2> Cancel Cheque/Bank Pass Book</h2>
+                                            </div>
+                                            <div class="file">
+                                                <a href="javascript:void(0);">
+                                                    <div class="hover" style="display: block;">
+                                                        <button type="button" class="btn btn-icon btn-icon-mini btn-round kyc_doc_upload" [hidden]="!fileflag">
+                                                            <i class="fa fa-edit"></i>
+                                                            <input type="file" class="form-control edit-kyc-img" accept="image/*" (change)="fileChange(photoidimg,'photoid')"  #photoidimg *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'">
+                                                        </button>
+    
+                                                    </div>
+                                                    <div class="icon">
+                                                        <span *ngIf="!kycdata['docimgshowphotoid']"><img width="150" src="assets/img/no-image.png" class="img-responsive kyc-img1" *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'" [hidden]="!fileflag"></span>
+                                                        <span *ngIf="kycdata['docimgshowphotoid']"><img [src]="kycdata['docimgshowaddress']" class="img-responsive kyc-img" *ngIf="kycdata['start']=='starting' || kycimg['status']?.status=='Rejected'" [hidden]="!fileflag"></span>
+                                                        <img [src]="kycimg['photoid']" class="img-responsive kyc-img zoom" *ngIf="kycimg['status']?.status=='Approval Pending' || kycimg['status']?.status=='Approved'">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form> 
+                    </div>          
+                </div>
+                <div class="row clearfix" *ngIf="kycimg['status']">
+                    <div class="col-md-12 text-center">
+                            <div *ngIf="kycimg['status']?.status=='Approved'" class="alert alert-success mt-2" role="alert">
+                                <span><b>Status: {{ kycimg['status']?.status}}</b></span>
+                            </div>
+    
+                            <div *ngIf="kycimg['status']?.status=='Approval Pending'" class="alert alert-warning mt-2" role="alert">
+                                <span ><b>Status: {{ kycimg['status']?.status}}</b></span>
+                            </div>
+    
+                            <div  *ngIf="kycimg['status']?.status=='Rejected'"
+                                 class="alert alert-danger mt-2" role="alert">
+                                <span><b>Status: {{ kycimg['status']?.status}}</b></span>
+                                <span><b>Remark: {{ kycimg['status']?.remark}}</b></span>
+                            </div>
+    
+                        <!-- <div class="alert alert-warning mt-2" role="alert">
+                            <span *ngIf="kycimg['status']?.status=='Rejected'"><b>Status:</b> {{ kycimg['status']?.status}}</span>
+                            <span *ngIf="kycimg['status']?.status=='Rejected'"><b>Remark:</b> {{ kycimg['status']?.remark}}</span>
+                        </div> -->
+                        
+                    </div>
+                </div>
+    
+                <div class="row clearfix">
+                    <div class="col-md-12 text-center m-b-30">
+                    <button class="btn kyc_doc_upload mt-3 btn-outline" type="submit"  (click)="onUpdateBank()" [hidden]="!fileflag"><i class="fa fa-paper-plane" aria-hidden="true"></i> {{value}}</button>
+                </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>

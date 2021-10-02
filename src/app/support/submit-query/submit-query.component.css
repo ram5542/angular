@@ -1,0 +1,11 @@
+.img-ul-file-upload {
+    padding: 0px !important;
+  }
+  .supportCustomClass {
+    width: 50%;
+    display: inline-block;
+    height: 20px;
+}
+button.btn.btn-primary.flat-buttons.waves-effect.waves-button.pull-right {
+  float: right;
+}

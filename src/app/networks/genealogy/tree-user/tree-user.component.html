@@ -1,0 +1,51 @@
+<div *ngIf="user.userid" class="_user tree-color-{{user.color}} my_tooltip_{{user.color}}" >	
+	<div class="_desc"  (click)="onuserClicked($event)">
+		<div class="profile_pic" >
+			<img class="img-fluid coin-image" src="assets/img/tree/{{user.color}}.png" style="cursor:pointer">
+		</div>
+		<div class="_title tree-title-{{user.color}}" >
+			<span  >{{user.userid}}</span>
+		</div>
+		<div class="view-tooltip">View</div>
+	</div>
+	<div class="_tooltip animated jackInTheBox" [ngStyle]="{'background-color': user.color}">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="_details">
+					<span class="user_name">{{user.username}}</span> <span class="_pack">( {{user.userid}} )</span>				
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<div class="row tooltip_name">
+					<div class="col-6">Name</div>
+					<div class="col-6">: {{user.username}}</div>
+				</div>
+				<div class="row" *ngFor="let tool of user.tooltip.slice(0, user.tooltip.length/2)">
+					<div class="col-6">{{tool.key}}</div>
+					<div class="col-6">: {{tool.value}}</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="row" *ngFor="let tool of user.tooltip.slice(user.tooltip.length/2, user.tooltip.length)">
+					<div class="col-6">{{tool.key}}</div>
+					<div class="col-6">: {{tool.value}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="!user.userid" class="_user  tree-color-B">
+		
+	<div class="_desc">
+
+			<img class="img-fluid coin-image" src="assets/img/tree/B.png">
+		<div class="_details text-center">
+			<a href="javascript:void(0)" (click)="onNewReg(user.root)">Join Now</a>
+			<!-- <a href="javascript:void(0)" (click)="onNewReg()">Join Now</a> -->
+		</div>
+	</div>
+</div>
+

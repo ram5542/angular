@@ -1,0 +1,135 @@
+<div class="container-fluid mt--6">
+  <div class="row">
+      <!-- Light table -->
+      <div class="col">
+
+          <div class="card">
+              <!-- Card header -->
+              <div class="card-header border-0">
+                  <h3 class="mb-0">{{headingInfo}}
+                  </h3>
+              </div>
+
+              <div class="card-block" style="margin-left: 20px;margin-right: 20px;">
+                <div class="table-responsive" *ngIf="records?.records">
+                  <table class="table align-items-center table-flush">
+                     <thead>
+                        <tr class="thead-light" style="background-color:#B89E7A;">
+
+                           <th *ngFor="let header of records?.header"
+                              [hidden]="(header==='CountryFlag') || ((header==='id') && (flag=='upgradeFlag'))">
+                              {{header}}</th>
+                           <th *ngIf="flag=='repurchase-summary'">Receipt</th>
+                           <th *ngIf="flag=='repurchase-summary'">Print Invoice</th>
+                           <th *ngIf="flag=='top-up-upgrade'">Print Invoice</th>
+                           <th *ngIf="flag=='view-e-pin'">Upgrade</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr
+                           *ngFor="let rowData of records?.records  | paginate:{itemsPerPage:records?.itemsPerPage,currentPage:page,id: 1,totalItems:records?.itemsTotal}">
+                           <td *ngFor="let header of records?.header"
+                              [hidden]="(header==='CountryFlag') || ((header==='id') && (flag=='upgradeFlag'))">
+                              {{rowData[header]}}
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <div class="table-responsive" *ngIf="records?.message">
+                  <table class="table custom-table m-0">
+                     <thead>
+                        <tr>
+                           <th *ngFor="let header of records?.header" [hidden]="header==='CountryFlag'">{{header}}</th>
+                           <th *ngIf="flag=='repurchase-summary'">Receipt</th>
+                           <th *ngIf="flag=='repurchase-summary'">Print Invoice</th>
+                           <th *ngIf="flag=='top-up-upgrade'">Print Invoice</th>
+                           <th *ngIf="flag=='view-e-pin'">Upgrade</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td class="no_record"><span>{{records?.message}}</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <nav class="nav-botem" *ngIf="records?.records">
+                  <pagination-controls (pageChange)="page = $event" directionLinks="true" autoHide="false"
+                     previousLabel="Previous" nextLabel="Next" [id]="1" (pageChange)="onPageChange($event)">
+                  </pagination-controls>
+               </nav>
+               <div *ngIf="!records  " id="js-grid-sortable" class="db-top-loader jsgrid" style="width: 100%;     text-align: center;">
+                <img src="assets/img/loader.gif" style="height: 95px;">
+             </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- <div class="container pull-up">
+   <div class="row">
+       <div class="col-md-12 m-b-30">
+         <div class="card m-b-30">
+            <div class="card-header">
+                  <h5 class="m-b-0">
+                      <i class="mdi mdi-checkbox-intermediate"></i> {{headingInfo}}
+                  </h5>
+
+            </div>
+
+         <div class="card-body">
+               <div class="table-responsive" *ngIf="records?.records">
+
+                   <table class="table table-hover ">
+                        <thead>
+                              <tr>
+
+                                <th *ngFor="let header of records?.header" [hidden]="(header==='CountryFlag') || ((header==='id') && (flag=='upgradeFlag'))">{{header}}</th>
+                                <th *ngIf="flag=='repurchase-summary'">Receipt</th>
+                                <th *ngIf="flag=='repurchase-summary'">Print Invoice</th>
+                                <th *ngIf="flag=='top-up-upgrade'">Print Invoice</th>
+                                <th *ngIf="flag=='view-e-pin'">Upgrade</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let rowData of records?.records  | paginate:{itemsPerPage:records?.itemsPerPage,currentPage:page,id: 1,totalItems:records?.itemsTotal}">
+                              <td *ngFor="let header of records?.header" [hidden]="(header==='CountryFlag') || ((header==='id') && (flag=='upgradeFlag'))">
+                                 {{rowData[header]}}
+                              </td>
+                        </tr>
+                        </tbody>
+                   </table>
+               </div>
+
+
+
+               <div class="table-responsive" *ngIf="records?.message">
+
+                  <table class="table table-hover ">
+                       <thead>
+                             <tr>
+                               <th *ngFor="let header of records?.header" [hidden]="header==='CountryFlag'">{{header}}</th>
+                               <th *ngIf="flag=='repurchase-summary'">Receipt</th>
+                               <th *ngIf="flag=='repurchase-summary'">Print Invoice</th>
+                               <th *ngIf="flag=='top-up-upgrade'">Print Invoice</th>
+                               <th *ngIf="flag=='view-e-pin'">Upgrade</th>
+                             </tr>
+                       </thead>
+                       <tbody>
+                       <tr><td class="no_record"><span>{{records?.message}}</span></td></tr>
+                       </tbody>
+                  </table>
+              </div>
+              <nav class="nav-botem" *ngIf="records?.records">
+               <pagination-controls (pageChange)="page = $event"
+               directionLinks ="true" autoHide ="false" previousLabel ="Previous" nextLabel = "Next" [id]="1" (pageChange)="onPageChange($event)">
+               </pagination-controls>
+            </nav>
+         </div>
+      </div>
+      </div>
+   </div>
+</div>    -->

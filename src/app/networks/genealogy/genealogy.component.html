@@ -1,0 +1,374 @@
+<div class="main-content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-12 m-b-30">
+            <div class="card">
+               <div class="card-body">
+                  <div class="tree_cover">
+                     <div class="tree_garden" *ngIf="treeUsers">
+                        <div class="tree_stem level-0">
+                           <div class="tree_leaf">
+                              <div class="user" (mouseover)="fireEvent('fadeInDown')">
+                                 <tree-user [user]="treeUsers['1']" (userClicked)="treeLoader(treeUsers['1'].userid)">
+                                 </tree-user>
+                              </div>
+                              <div class="join_stem">
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                              </div>
+                           </div>
+                           <div class="container-fluid">
+                              <div class="row">
+                                 <div class="col-md-6 col-6">
+                                    <div class="tree_stem level-1">
+                                       <div class="tree_leaf">
+                                          <div class="user animated rotateInDownLeft"
+                                             (mouseover)="fireEvent('rotateInDownLeft')">
+                                             <tree-user [user]="treeUsers['2']"
+                                                (userClicked)="treeLoader(treeUsers['2'].userid)"></tree-user>
+                                          </div>
+                                          <div class="join_stem">
+                                             <span></span>
+                                             <span></span>
+                                             <span></span>
+                                             <span></span>
+                                          </div>
+                                       </div>
+                                       <div class="container-fluid">
+                                          <div class="row">
+                                             <div class="col-md-6 col-6">
+                                                <div class="tree_stem level-2">
+                                                   <div class="tree_leaf">
+                                                      <div class="user animated fadeInLeft"
+                                                         (mouseover)="fireEvent('fadeInLeft')">
+                                                         <tree-user [user]="treeUsers['4']"
+                                                            (userClicked)="treeLoader(treeUsers['4'].userid)">
+                                                         </tree-user>
+                                                      </div>
+                                                      <div class="join_stem">
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="container-fluid">
+                                                      <div class="row">
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInLeft"
+                                                                     (mouseover)="fireEvent('fadeInLeft')">
+                                                                     <tree-user [user]="treeUsers['8']"
+                                                                        (userClicked)="treeLoader(treeUsers['8'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInLeft"
+                                                                     (mouseover)="fireEvent('fadeInLeft')">
+                                                                     <tree-user [user]="treeUsers['9']"
+                                                                        (userClicked)="treeLoader(treeUsers['9'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="col-md-6 col-6">
+                                                <div class="tree_stem level-2">
+                                                   <div class="tree_leaf">
+                                                      <div class="user animated fadeInLeft"
+                                                         (mouseover)="fireEvent('fadeInLeft')">
+                                                         <tree-user [user]="treeUsers['5']"
+                                                            (userClicked)="treeLoader(treeUsers['5'].userid)">
+                                                         </tree-user>
+                                                      </div>
+                                                      <div class="join_stem">
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="container-fluid">
+                                                      <div class="row">
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInLeft"
+                                                                     (mouseover)="fireEvent('fadeInLeft')">
+                                                                     <tree-user [user]="treeUsers['10']"
+                                                                        (userClicked)="treeLoader(treeUsers['10'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInLeft"
+                                                                     (mouseover)="fireEvent('fadeInLeft')">
+                                                                     <tree-user [user]="treeUsers['11']"
+                                                                        (userClicked)="treeLoader(treeUsers['11'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+
+                                 <div class="col-md-6 col-6">
+                                    <div class="tree_stem level-1">
+                                       <div class="tree_leaf">
+                                          <div class="user animated rotateInDownRight"
+                                             (mouseover)="fireEvent('rotateInDownRight')">
+                                             <tree-user [user]="treeUsers['3']"
+                                                (userClicked)="treeLoader(treeUsers['3'].userid)"></tree-user>
+                                          </div>
+                                          <div class="join_stem">
+                                             <span></span>
+                                             <span></span>
+                                             <span></span>
+                                             <span></span>
+                                          </div>
+                                       </div>
+                                       <div class="container-fluid">
+                                          <div class="row">
+                                             <div class="col-md-6 col-6">
+                                                <div class="tree_stem level-2">
+                                                   <div class="tree_leaf">
+                                                      <div class="user animated fadeInLeft"
+                                                         (mouseover)="fireEvent('fadeInRight')">
+                                                         <tree-user [user]="treeUsers['6']"
+                                                            (userClicked)="treeLoader(treeUsers['6'].userid)">
+                                                         </tree-user>
+                                                      </div>
+                                                      <div class="join_stem">
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="container-fluid">
+                                                      <div class="row">
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInLeft"
+                                                                     (mouseover)="fireEvent('fadeInRight')">
+                                                                     <tree-user [user]="treeUsers['12']"
+                                                                        (userClicked)="treeLoader(treeUsers['12'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInRight"
+                                                                     (mouseover)="fireEvent('fadeInRight')">
+                                                                     <tree-user [user]="treeUsers['13']"
+                                                                        (userClicked)="treeLoader(treeUsers['13'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="col-md-6 col-6">
+                                                <div class="tree_stem level-2">
+                                                   <div class="tree_leaf">
+                                                      <div class="user animated fadeInRight"
+                                                         (mouseover)="fireEvent('fadeInRight')">
+                                                         <tree-user [user]="treeUsers['7']"
+                                                            (userClicked)="treeLoader(treeUsers['7'].userid)">
+                                                         </tree-user>
+                                                      </div>
+                                                      <div class="join_stem">
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                         <span></span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="container-fluid">
+                                                      <div class="row">
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInLeft"
+                                                                     (mouseover)="fireEvent('fadeInRight')">
+                                                                     <tree-user [user]="treeUsers['14']"
+                                                                        (userClicked)="treeLoader(treeUsers['14'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-6 col-6">
+                                                            <div class="tree_stem level-3">
+                                                               <div class="tree_leaf">
+                                                                  <div class="user animated fadeInRight"
+                                                                     (mouseover)="fireEvent('fadeInRight')">
+                                                                     <tree-user [user]="treeUsers['15']"
+                                                                        (userClicked)="treeLoader(treeUsers['15'].userid)">
+                                                                     </tree-user>
+                                                                  </div>
+                                                                  <div class="join_stem">
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                     <span></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                                  <div class="col-md-6 col-6">
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row tree_c2p">
+                     <div class="col-md-6 text-center">
+                        <button (click)="treeLoader(memberId)" class="btn btn-primary btn-md">Back to Root</button>
+                     </div>
+                     <div class="col-md-6 text-center">
+                        <form class="form-inline" #form="ngForm">
+                           <div class="form-group" style="width: 100%;">
+                              <input type="text" name="userName" placeholder="Tree User Id" class="form-control myInp"
+                                 #user required
+                                 style="padding: 8px;width: auto;display: inline-block;vertical-align: bottom;">
+                              <button type="submit" class="btn btn-primary btn-md"
+                                 (click)="treeLoader(user.value)">Go</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Convert Wallet</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item active"><a href="#">Convert Wallet</a></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <form [formGroup]="transferglowmoney">
+                <div class="form-group" *ngIf="balance">
+                  <label for="disabledSelect">Main Wallet Balance</label>
+                  <input type="text" class="form-control" disabled="disabled" value="{{balance}}">
+                </div>
+                <!-- <div class="form-group" [ngClass]="displayFieldCss(transferglowmoney, 'toid')">
+                  <label>User ID</label>
+                  <input type="text" class="form-control" formControlName="toid" style="color: #000"
+                    (blur)="getUserName($event.target,1)" (focus)="setUserNameOnFocus($event.target)"
+                    placeholder="Enter User ID">
+                  <app-field-error-display [displayError]="isFieldValid(transferglowmoney,'toid')"
+                    errorMsg="Please Enter valid User ID"></app-field-error-display>
+                  <h6 class="float-right crt-sponsor" *ngIf="showname" style="font-size: 12px;"
+                    [ngStyle]="{'color':showflag === 1 ? 'green' : 'red' }">
+                    {{showname}}</h6>
+                </div> -->
+                <div class="form-group" [ngClass]="displayFieldCss(transferglowmoney, 'amount')">
+                  <label>Amount</label>
+                  <input type="number" class="form-control" placeholder="Enter Amount" formControlName="amount">
+                  <app-field-error-display [displayError]="isFieldValid(transferglowmoney, 'amount')"
+                    errorMsg="Amount Required"></app-field-error-display>
+                </div>
+                <div class="form-group" [ngClass]="displayFieldCss(transferglowmoney, 'scode')">
+                  <label>Transaction Password</label>
+                  <input type="password" class="form-control" placeholder="Enter Transaction Password"
+                    formControlName="scode">
+                  <app-field-error-display [displayError]="isFieldValid(transferglowmoney, 'scode')"
+                    errorMsg="Transaction Password is Required">
+                  </app-field-error-display>
+                </div>
+                <button class="btn btn-primary btn-round" (click)="onTransfer()">Transfer</button>
+              </form>          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

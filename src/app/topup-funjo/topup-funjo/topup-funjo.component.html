@@ -1,0 +1,82 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="content-header row align-items-center my-5">
+      <nav aria-label="breadcrumb" class="col-sm-4 order-sm-last mb-3 mb-sm-0 p-0 ">
+        <ol class="breadcrumb d-inline-flex font-weight-600 fs-13 bg-white mb-0 float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Use Funjo</a></li>
+          <li class="breadcrumb-item active">Stake Funjo</li>
+        </ol>
+      </nav>
+      <div class="col-sm-8 header-title p-0">
+        <div class="media">
+          <div class="header-icon text-success mr-3"><i class="typcn typcn-puzzle-outline"></i></div>
+          <div class="media-body">
+            <h1 class="font-weight-bold">Stake Funjo</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 m-b-30">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div id="ContentPlaceHolder1_ctl00_UpdatePanel6">
+              <div id="ContentPlaceHolder1_ctl00_LabelDiv">
+                <span id="ContentPlaceHolder1_ctl00_lblMsg"></span>
+              </div>
+            </div>
+            <div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h1>75% Funjo Wallet / 25% USDT Wallet</h1>
+                  
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="disabledSelect">Topup Id</label>
+                    <input #loginid class="form-control" type="text" (blur)="getUserName($event.target.value)" >
+                    <div *ngIf="uservalue"
+                    [ngStyle]="{'color': userflag === 1 ? 'green' : 'red'}">{{uservalue}}</div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group" *ngIf="packagedata">
+                    <label for="disabledSelect">Available Funjo:</label>
+                    <input class="form-control" disabled="disabled"
+                      value="Funjo {{packagedata['cashwalletbalancestotal']}}">
+                    <input type="hidden" value="{{packagedata['cashwalletbalancestotal']}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="disabledSelect">Enter Funjo :</label>
+                    <input type="text" #amount class="form-control">                   
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group" *ngIf="packagedata">
+                    <label for="disabledSelect">Available USDT:</label>
+                    <input class="form-control" disabled="disabled"
+                      value="USDT {{packagedata['usdtwalletbalancestotal']}}">
+                    <input type="hidden" value="{{packagedata['usdtwalletbalancestotal']}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="submit" (click)="onUpgrade(amount.value,loginid.value)" value="Stake Funjo" class="btn btn-primary">
+                    <br>
+                    <span id="ContentPlaceHolder1_ctl00_lblErr"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="full-page login-page" filter-color="black">
+    <particles [style]="myStyle" [params]="myParams"></particles>
+    <div class="register-area section-padding-120-70">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12 col-lg-6">
+                    <div class="register-thumbnail mb-50"><img class="img-responsive" src="assets/img/hero-3.png"
+                            alt=""></div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card register-card">
+                        <div class="card-body">
+                            <h1>Login</h1>
+                            <p>Didn't have an account?<a class="ml-2" [routerLink]="['/register']">Sign Up</a></p>
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <div class="register-form">
+                                    <div class="form-group">
+                                        <label class="control-label">User ID</label>
+                                        <input type="text" required class="form-control" formControlName="username">
+                                        <div *ngIf="submitted && f.username.errors || f.username.errors && f.username.touched"
+                                            class="errorMsg">
+                                            <div class="errorMsg" *ngIf="f.username.errors.required">User ID is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Password</label>
+                                        <input type="password" required class="form-control" formControlName="password">
+                                        <div *ngIf="submitted && f.password.errors || f.password.errors && f.password.touched"
+                                            class="errorMsg">
+                                            <div class="errorMsg" *ngIf="f.password.errors.required">password is
+                                                required </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" (click)="onLogin()" class="btn btn-primary w-100"
+                                    [disabled]="loginForm.invalid || loginForm.pristine" id="loginSubmit">Login</button>
+                                <div class="login-meta-data d-flex align-items-center justify-content-between">
+                                    <div class="form-check mt-3">
+                                        <input class="form-check-input" id="rememberMe" type="checkbox" value=""
+                                            checked="">
+                                        <label class="form-check-label" for="rememberMe">Keep me logged in</label>
+                                    </div>
+                                    <a class="forgot-password mt-3" routerLink="/forgot">Forgot Password?</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

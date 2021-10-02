@@ -1,0 +1,107 @@
+<div class="header bg-primary pb-1">
+  <div class="container-fluid">
+      <div class="header-body">
+          <div class="row align-items-center py-4">
+              <div class="col-lg-6 col-7">
+                  <h6 class="h2 text-white d-inline-block mb-0">Package Summary</h6>
+                  <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                      <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                          <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                          <li class="breadcrumb-item active"><a href="#">Package Summary</a></li>
+
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="card m-b-30">
+      <div class="card-header border-0 mb-0">
+          <h3 class="mb-0">Package Summary</h3>
+      </div>
+      <div class="card-block" style="margin-left: 20px;margin-right: 20px;">
+          <div class="table-responsive">
+              <table id="referral" class="table align-items-center table-flush">
+                  <thead>
+                      <tr class="thead-light" role="row" *ngIf="tabledata['headers']">
+                          
+                          <th *ngFor="let header of tabledata['headers']"
+                          [hidden]="header =='id'">
+                          {{header}}</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>                     
+                      <tr role="row" class="odd" *ngFor="let row of tabledata['records']">
+                          <td *ngFor="let data of row | paginate:{itemsPerPage:50,currentPage: page,id: 1,totalItems: tabledata['recordsTotal']}"
+                              [hidden]="row[4]===data">
+                              {{data}}</td>
+                              <td>
+                                <span><button class="btn btn-sm btn-primary" (click)="PackageDetail(row[4])">view</button></span>
+                            </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <pagination-controls class="my-pagination" (pageChange)="page = $event" *ngIf="tabledata['records']"
+              directionLinks="true" autoHide="false" previousLabel="Previous" nextLabel="Next"
+              [id]="1" (pageChange)="onPageChange($event)">
+          </pagination-controls>
+          <table id="referral" class="table align-items-center table-flush" *ngIf="tableview['failmessage']">
+              <tr style="text-align: center;color: red; margin-top: 20px;" ><td colspan="12">{{ tableview['failmessage'] }}</td></tr>
+          </table>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal fade" id="PackageModal" tabindex="-1" role="dialog" aria-labelledby="PackageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content flat Package_modal_content">
+            <div class="modal-header text-center" style="display: block">
+                <h4 class="text-uppercase text-bold-400 grey darken-1">Package Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body Package_modal_body">
+                
+                <div class="table-responsive">
+                            <table  class="table align-items-center table-flush" id="Packagedetails">
+                                <tbody>
+                                    <tr class="thead-light">
+                                        <th *ngFor="let key of keys1" [hidden]="(key=='id')?true:false">{{key}}</th>
+                                    </tr>
+                                    <tr *ngFor="let keydata of data1 | paginate: { itemsPerPage: 10, currentPage: p }">
+                                        <td *ngFor="let key of keys1" [hidden]="(key=='id')?true:false">
+                                            <ng-container *ngIf="keydata[key] == 'PAID'">
+                                                <span  class="paid-staus">
+                                                   <i class="far fa-dot-circle"></i> Paid
+                                                </span>
+                                             </ng-container>
+                                             <ng-container *ngIf="keydata[key] == 'UNPAID'">
+                                                <span  class="unpaid-staus">
+                                                   <i class="far fa-dot-circle"></i> UnPaid
+                                                </span>
+                                             </ng-container>
+                                             <ng-container *ngIf="keydata[key] !== 'PAID' && keydata[key] !== 'UNPAID'">
+                                                {{keydata[key]}}
+                                             </ng-container>                                             
+                                        </td>
+                                         
+                                    </tr>
+                                    <tr *ngIf="msg">
+                                        <td style="text-align: center;"><span style="text-align: center;color: red; margin-top: 20px;">No Record Found</span></td>  
+                                    </tr>
+                                </tbody>
+                               
+                            </table>
+                            <div class="card-footer pb-0 pt-3" *ngIf="data1">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+

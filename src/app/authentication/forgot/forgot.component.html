@@ -1,0 +1,47 @@
+<div class="full-page login-page" filter-color="black">
+    <particles [style]="myStyle" [params]="myParams"></particles>
+    <div class="register-area section-padding-120-70">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12 col-lg-6">
+                    <div class="register-thumbnail mb-50"><img class="img-responsive" src="assets/img/hero-3.png"
+                            alt=""></div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card register-card">
+                        <div class="card-body">
+                            <h1>Forgot Password</h1>
+                            <!-- <p>Didn't have an account?<a class="ml-2" [routerLink]="['/login']">Sign In</a></p> -->
+                            <form name='form' (ngSubmit)='f.form.valid && OnForgotPassword()' #f='ngForm' novalidate
+                                method='post'>
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Login ID</label>
+                                    <input type="text" class="form-control form-control-prepended" name="username"
+                                        [(ngModel)]="model.username" #username="ngModel" placeholder="username"
+                                        required>
+                                </div>
+                                <!-- <div style="text-align: center;">
+                                    <span>OR</span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Email ID</label>
+                                        <input type="text" class="form-control form-control-prepended" name="email"
+                                            placeholder="yourmail@example.com" [(ngModel)]="model.email"
+                                            #email="ngModel" required>
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <button class="btn text-uppercase btn-block  btn-primary">
+                                        Send Password
+                                    </button>
+                                    <p class="mt-2"><a routerLink="/login">back to Login</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

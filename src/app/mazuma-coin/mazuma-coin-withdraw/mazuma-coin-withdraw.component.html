@@ -1,0 +1,62 @@
+<div class="main-content">
+   <div class="header bg-primary pb-1">
+      <div class="container-fluid">
+         <div class="header-body">
+            <div class="row align-items-center py-4">
+               <div class="col-lg-6 col-7">
+                  <h6 class="h2 text-white d-inline-block mb-0">MazumaCoin Withdrawal</h6>
+                  <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item active"><a href="#">New Withdrawal</a></li>
+
+                     </ol>
+                  </nav> -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="container-fluid mb-5">
+      <h4 class="card-title">MazumaCoin Wallet Withdraw Request</h4>
+      <div class="row pricing-table">
+         <div class="col-md-12 box-center">
+            <div class="mb-5 card card-hover">
+               <div class="card-body">
+                  <form>
+                     <div class="card-body1">
+                        <h4 class="card-title"></h4>
+                        <div class="row">
+
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Your Funjo MazumaCoin Withdrawal Balance is</label>
+                                 <input disabled="disabled" type="text" id="amount" name="amount"
+                                    value="{{wallet['balance']}}" class="form-control">
+                                 <span class="material-input"></span>
+                              </div>
+                              <div class="form-group">
+                                 <label>Amount<small>*</small></label>
+                                 <input type="number" id="amount" name="amount" class="form-control" required #amount>
+                                 <span class="material-input"></span>
+                              </div>
+                              <!-- <div class="form-group">
+                           <label>Transaction Password<small>*</small></label>
+                           <input type="password" id="scode" name="scode" class="form-control" required #scode>
+                           <span class="material-input"></span>
+                        </div> -->
+                              <button type="submit" class="btn btn-primary btn-md mr-2"
+                                 (click)="getWithdrawl(amount)">Withdraw Request</button>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+           
+         </div>
+      </div>      
+   </div>
+   <app-table [records]="records" [headingInfo]="referralType" (UserClicked)="onPageChange($event)">
+   </app-table>
+</div>

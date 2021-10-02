@@ -1,0 +1,70 @@
+
+<div class="main-content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-12">
+            <div class="card">
+               <div class="card-header card-name-bg">Ticket Summary</div>
+               <div class="card-body">  
+                  <div *ngIf="!data && !msg" id="js-grid-sortable"  class="db-top-loader jsgrid" style="width: 100%;">
+                     <img src="assets/img/loader.gif" style="height: 95px;">
+                  </div>                    
+                  <div class="jsgrid" id="js-grid-sortable" style=" width: 100%;" *ngIf="data">
+                     <table class="jsgrid-table table-responsive table-display table_scroll" id="table-scroll">
+                        <tbody>
+                           <tr class="jsgrid-header-row">
+                              <th class="jsgrid-header-cell">SNo.</th>
+                              <th class="jsgrid-header-cell">Ticket</th>
+                              <th class="jsgrid-header-cell">Subject</th>
+                              <th class="jsgrid-header-cell">Created On</th>
+                              <th class="jsgrid-header-cell">Last Reply</th>
+                              <th class="jsgrid-header-cell">Status</th>
+                              <th class="jsgrid-header-cell">Action</th>
+                           </tr>
+                           <tr *ngFor = " let ticket of data | paginate:{itemsPerPage:10,currentPage:page,id: 1}" class="jsgrid-row">
+                              <td class="jsgrid-cell">{{ticket['S.No.']}}</td>
+                              <td class="jsgrid-cell">{{ticket['ticketno']}}</td>
+                              <td class="jsgrid-cell">{{ticket['Subject']}}</td>
+                              <td class="jsgrid-cell">{{ticket['ticketDate']}}</td>
+                              <td class="jsgrid-cell">{{ticket['lastreplied']}}</td>
+                              <td class="jsgrid-cell" *ngIf="ticket['Status'] == 'Closed'" class="status-close"><i class="fa fa-dot-circle" aria-hidden="true"></i> {{ticket['Status']}}</td>
+                              <td *ngIf="ticket['Status'] == 'Open'" class="status-open"><i class="fa fa-dot-circle" aria-hidden="true"></i> {{ticket['Status']}}</td>
+                              <td class="jsgrid-cell"><a (click)= "onChat(ticket)" class="_details_popup" href="javascript:void(0)">Details</a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div *ngIf="msg" class="card-block table-responsive">
+                     <table class="table striped-table display nowrap table-bordered scroll-horizontal-vertical dataTable no-footer">
+                        <tbody>
+                           <tr *ngIf="msg">
+                              <td><span><b>{{msg}}</b></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <nav class="nav-botem" *ngIf="!msg">
+                  <pagination-controls (pageChange)="page = $event" directionLinks="true" autoHide="false" previousLabel="Previous" nextLabel="Next" [id]="1" (pageChange)="onPageChange($event)"></pagination-controls>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+     
+    
+   

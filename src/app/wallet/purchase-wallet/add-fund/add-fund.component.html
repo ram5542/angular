@@ -1,0 +1,432 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 m-b-30" *ngIf="firstSection">
+                <h4 class="card-title">Add Fund</h4>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- <div class="col-md-4">
+                                <div class="card card-hover">
+                                    <div class="card-body">
+                                        <div class="short-loader element-content dash-font" *ngIf="!walletbalance">
+                                            <img src="assets/img/loader.gif">
+                                        </div>
+                                        <div class="text-center" *ngIf="walletbalance">
+                                            <img src="assets/img/img12.jpg" class="card-img" alt="...">
+                                            <div class="avatar-lg avatar">
+                                                <div class="avatar-title rounded-circle badge-soft-success"><i
+                                                        class="fas fa-wallet"></i></div>
+                                            </div>
+                                            <div class="text-center">
+                                                <h1 class="fw-600 p-t-20">$ {{walletbalance}}</h1>
+                                                <p class="text-muted fw-600 mb-0">Fund Wallet Balance</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                <div class="short-loader element-content dash-font" *ngIf="!walletbalance">
+                                    <img src="assets/img/loader.gif">
+                                </div>
+                                <div class="card text-center" *ngIf="walletbalance">
+                                    <img src="assets/img/img9.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay">
+                                        <div class="avatar-lg avatar">
+                                            <div class="avatar-title rounded-circle badge-soft-success"><i
+                                                    class="fas fa-wallet text-center"></i></div>
+                                        </div>
+                                        <h1 class="fw-600 p-t-20">$ {{walletbalance}}</h1>
+                                        <p class="text-muted fw-600 mb-0">Fund Wallet Balance</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 box-center">
+                                <div class="card card-hover">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Add Funds to Fund Wallet (BTC)
+                                        </h4>
+                                        <p class="card-para">Add funds Via BTC payment and use funds to Buy
+                                            packages or Transfer.</p>
+                                        <form [formGroup]="addfund" class="ng-untouched ng-pristine ng-invalid"
+                                            novalidate="" style="    margin-bottom: 0;">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-12 mb-2">
+                                                            <label style="color: #000 !important;width: 100%;">Select
+                                                                Payment Method</label><br>
+                                                            <input type="radio" value="btc" formControlName="cointype">
+                                                            <span>&nbsp; BTC </span>&nbsp;
+                                                            <!-- <input type="radio" value="eth" formControlName="cointype"> 
+                                                              <span>&nbsp; ETH </span>&nbsp; -->
+                                                            <div *ngIf="submitted && f.cointype.errors"
+                                                                class="errorMsg">
+                                                                <div *ngIf="f.cointype.errors.required">Please Select
+                                                                    Payment Method</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-field col-md-8 s8" style="margin-bottom: 0;">
+                                                            <input formControlName="amount"
+                                                                placeholder="Enter Amount (USD)" type="text"
+                                                                class="form-control">
+                                                            <div *ngIf="submitted && f.amount.errors" class="errorMsg">
+                                                                <div *ngIf="f.amount.errors.required">This
+                                                                    field is required</div>
+                                                                <div [hidden]="!f.amount.errors.patternAmountInvalid">
+                                                                    Allow only a number (Eight decimal
+                                                                    point)</div>
+                                                            </div>
+                                                            <div class="minamount">(Enter Minimum 25$
+                                                                Amount)</div>
+                                                        </div>
+                                                        <div class="col s6 m4 mt-2">
+                                                            <button class="btn btn-primary" (click)="onAddFund()"><i
+                                                                    class="fas fa-sign-in-alt"></i>Next</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card m-b-30">
+                            <div class="card-header">
+                                <h5 class="m-b-0">
+                                    <i class="mdi mdi-checkbox-intermediate"></i> Add Fund History
+                                </h5>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div class="short-loader element-box-tp"
+                                        *ngIf="!tableview['failmessage'] && !tabledata['records']">
+                                        <img src="assets/img/loader.gif">
+                                    </div>
+                                    <div class="row" *ngIf="tabledata['records']">
+                                        <div class="col-sm-12">
+                                            <table id="referral" width="100%" class="table table-hover">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th *ngFor="let header of tabledata['headers']"
+                                                            class="sorting_disabled" rowspan="1" colspan="1"
+                                                            style="width: 157.2px;" [hidden]="header=='BTC Address'">
+                                                            {{header}}</th>
+                                                        <th>Destination Address</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr role="row" class="odd" *ngFor="let row of tabledata['records']">
+                                                        <td
+                                                            *ngFor="let data of row | paginate:{itemsPerPage:50,currentPage: page,id: 1,totalItems: tabledata['recordsTotal']}">
+                                                            <ng-container
+                                                                *ngIf="data !=='Pending' && data !=='Success' && data !=='Rejected' && data !=='BTC' ">
+                                                                {{data}}</ng-container>
+
+                                                            <ng-container *ngIf="data =='Pending'">
+                                                                <span class="fund-staus warning"><i
+                                                                        class="fa fa-dot-circle-o">
+                                                                        {{data}}</i> </span>
+                                                            </ng-container>
+
+                                                            <ng-container *ngIf="data =='Success'">
+                                                                <span class="fund-staus success"><i
+                                                                        class="fa fa-dot-circle-o">
+                                                                        {{data}}</i> </span>
+                                                            </ng-container>
+
+                                                            <ng-container *ngIf="data =='Rejected'">
+                                                                <span class="fund-staus info-reject"><i
+                                                                        class="fa fa-dot-circle-o">
+                                                                        {{data}}</i></span>
+                                                            </ng-container>
+
+                                                            <ng-container *ngIf="data =='BTC'">
+                                                                <img src="assets/img/btc-logo.svg" width="20">
+                                                            </ng-container>
+
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="tabledata['records']">
+                                        <div class="col-sm-12 col-md-12">
+                                            <div class="dataTables_paginate paging_simple_numbers"
+                                                id="referral_paginate" *ngIf="tabledata['records']">
+                                                <pagination-controls class="my-pagination" (pageChange)="page = $event"
+                                                    directionLinks="true" autoHide="false" previousLabel="Previous"
+                                                    nextLabel="Next" [id]="1" (pageChange)="onPageChange($event)">
+                                                </pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body card-dashboard text-center" *ngIf="tableview['failmessage']">
+                                        <span class="table-record-not-found">{{ tableview['failmessage'] }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <div class="card px-3 py-3" *ngIf="secondSection">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="avatar-lg avatar">
+                                            <div class="avatar-title rounded-circle badge-soft-success">
+                                                <i class="fab fa-btc"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <h1 class="fw-600 p-t-20">{{btcvalue}} BTC</h1>
+                                            <p class="text-muted fw-600 mb-0">{{addfundamount}} USD</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wallet_balance_dash">
+
+                            <h4 class="text-center mt-2"><span class="countdown">19:20</span></h4>
+
+                            <div class="qr-gif ng-star-inserted">
+                                <div class="qr-gif ng-star-inserted" *ngIf="!qr">
+                                    <img class="qr-img ng-star-inserted" src="assets/img/loader.gif">
+                                </div>
+                                <div class="qr-gif ng-star-inserted" *ngIf="qr">
+                                    <img class="qr-img ng-star-inserted" *ngIf="qr" class="qr-img" src="{{qr}}">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <p class="text-center"> Send the indicated amount to the
+                                addres below</p>
+                            <form novalidate="" style="max-width:500px;margin:auto"
+                                class="ng-untouched ng-pristine ng-valid">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fab fa-btc"></i></span>
+                                    </div>
+                                    <input style="margin: 0;" class="form-control" type="text" value="{{btcvalue}}"
+                                        name="usrnm" #leftLink readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn  theme_card  edit-copy-button"
+                                            (click)="copied($event, 'L')">Copy</button>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-address-card"></i></span>
+                                    </div>
+                                    <input style="margin: 0;" class="form-control" type="text" value="{{btcaddress}}"
+                                        name="email" #rightLink readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn  theme_card  edit-copy-button"
+                                            (click)="copied($event, 'R')">Copy</button>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="input-group quick_info_group"
+                                    style="margin-bottom: 15px;">
+                                    <span class="input-group-addon left-group">
+                                        <i class="fa fa-btc" aria-hidden="true"></i>
+                                    </span>
+                                    <input style="margin: 0;" class="form-control"
+                                        type="text" value="{{btcvalue}}" name="usrnm"
+                                        #leftLink readonly>
+
+                                    <span class="input-group-addon right-group"
+                                        [ngxClipboard]="leftLink"
+                                        (cbOnSuccess)="copied($event, 'L')">
+                                        <i class="fa fa-copy icon"></i>
+                                    </span>
+                                </div> -->
+
+                                <!-- <div class="input-group quick_info_group"
+                                    style="margin-bottom: 15px;">
+                                    <span class="input-group-addon left-group">
+                                        <i class="fa fa-google-wallet icon"></i>
+                                    </span>
+
+                                    <input style="margin: 0;" class="form-control"
+                                        type="text" value="{{btcaddress}}" name="email"
+                                        #rightLink readonly>
+
+                                    <span class="input-group-addon right-group"
+                                        [ngxClipboard]="rightLink"
+                                        (cbOnSuccess)="copied($event, 'R')">
+                                        <i class="fa fa-copy icon"></i>
+                                    </span>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-body card-6-6">
+                                <p class="text-center">Do not send funds from an
+                                    exchange .</p>
+                                <hr>
+                                <p class="text-center">Your payment will be confirmed
+                                    after it receives 1 confirmation on the Bitcoin
+                                    network</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 pull-left">
+                            <h6>Created 20 minutes ago</h6>
+                            <button class="btn float-left theme_card mb-10" (click)="onBackSecond();"><i
+                                    class="fa fa-close"></i>
+                                Cancel</button>
+                        </div>
+                        <div class="col-md-8 ">
+                            <h6 style="text-align: right">Order ID # {{invoiceno}} </h6>
+                            <a href="javascript:void(0)">
+                                <button type="button" class="btn  theme_card float-right mb-10"
+                                    (click)="onSubmitSecond();">
+                                    <i class="fa fa-arrow-right"></i> Submit</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" *ngIf="thirdSection">
+                    <div class="rows">
+                        <div class="col-md-12 col-md-offset-2">
+                            <div class="row bg_card">
+                                <div class="col-md-6 offset-md-3">
+                                    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <div class="avatar-lg avatar">
+                                                    <div class="avatar-title rounded-circle badge-soft-success">
+                                                        <i class="fab fa-btc"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <h1 class="fw-600 p-t-20">{{btcvalue}} BTC</h1>
+                                                    <p class="text-muted fw-600 mb-0">{{addfundamount}} USD</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="text-center paid_box" *ngIf="confirmationsFlagTwo">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        <h4 class="text-center">Paid and Confirmed</h4>
+                                    </div>
+
+                                    <div class="text-center unconf_paid_box ng-star-inserted" style="margin-top: 0px;"
+                                        *ngIf="confirmationsFlagOne">
+                                        <i aria-hidden="true" class="fa fa-check-circle"></i>
+                                        <h4 class="text-center">Paid and Unconfirmed</h4>
+                                    </div>
+
+                                    <div class="text-center unconf_paid_box_message ng-star-inserted"
+                                        style="margin-top: 0px;" *ngIf="statusMessageFlag">
+                                        <i aria-hidden="true" class="fa fa-times-circle"></i>
+                                        <h4 class="text-center">{{statusMessage}}</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row bg_card">
+                                <div class="col-md-12">
+                                    <div class="trans_box">
+                                        <h3>BITCOIN TRANSACTIONS</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="trans_box_text">
+                                                    <h5>CONFIRMATION:
+                                                        {{confirmations}}/{{totalconfirmationsrequired}}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="text-right trans_box_text">
+                                                    <h5>{{btcvalue}} BTC</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-right mt-2">{{createdate}}</p>
+                                </div>
+                            </div>
+                            <div class="row bg_card">
+                                <div class="col-md-12">
+                                    <div class="text-right charity_box">
+                                        <h2 class="size_mount">TOTAL AMOUNT RECEIVED:
+                                            {{btcvalue}} BTC</h2>
+                                        <h5>AMOUNT LEFT TO PAY: {{addfundamount}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg_card">
+                                <div class="col-md-12">
+                                    <div class="text-right charity_box footer_box">
+                                        <h5 class="text-left"> </h5>
+                                        <h6>Order ID # {{invoiceno}} </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" *ngIf="fiurthSection">
+                    <div class="row bg_card">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="avatar-lg avatar">
+                                            <div class="avatar-title rounded-circle badge-soft-success">
+                                                <i class="fab fa-btc"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <h1 class="fw-600 p-t-20">{{btcvalue}} BTC</h1>
+                                            <p class="text-muted fw-600 mb-0">{{addfundamount}} USD</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="text-center unpaid_box">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <h4 class="text-center">This order has expired</h4>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

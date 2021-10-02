@@ -1,0 +1,105 @@
+.transition {
+  transition: all 0.4s ease-in-out;
+}
+.carousel .content {
+  display: flex;
+}
+.carousel .content .item {
+  width: 100%;
+  display: block;
+}
+.carousel .content .item .img {
+  width: 100%;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 0;
+  padding-bottom: 50%;
+}
+.carousel .item {
+  width: 100%;
+  display: block;
+}
+.carousel .item .img {
+  width: 100%;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 0;
+  padding-bottom: 50%;
+}
+.carousel .ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: black;
+  border: 2px solid;
+  opacity: 0.5;
+}
+.carousel .ball.visible {
+  opacity: 1;
+}
+.carousel .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background: #ff5252;
+}
+.carousel .click-area {
+  width: 50px;
+  text-align: center;
+}
+.carousel .click-area i {
+  font-size: 3em;
+}
+.carousel
+{
+  height: 100vh !important;
+}
+.edit-form
+{
+  position: absolute;
+  left: 35%;
+  top:15%;
+  /* z-index: 99999; */
+  background-color: #000000ad;
+  padding: 25px;
+  width: 28%;
+  color: #fff;
+  border: 7px solid #0707066e;
+  border-radius: 5px;
+  box-shadow: 0px 2px 15px #fff;
+}
+.edit-form .form-control
+{
+  background-color: #0000008a;
+}
+.edit-form .input-group-text
+{
+   background-color: #140702;
+}
+.edit-form .input-group-text .mdi-check-circle-outline
+{
+  color: #fff;
+}
+.edit-form .form-control::placeholder
+{
+  color: #fff;
+}
+.edit-form .forgot-password, .edit-form .text-small
+{
+  color: #fff;
+}
+
+.edit-form img
+{
+  height: 170px;
+}
+.error-msg {
+  color: #e6231f !important;
+}
+.fix-error-icon {
+  top: 27px;
+}

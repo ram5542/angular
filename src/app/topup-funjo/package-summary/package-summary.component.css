@@ -1,0 +1,8 @@
+.close > span:not(.sr-only) {
+    color: rgb(228 215 215 / 100%) !important;
+}
+button.close {
+    position: absolute;
+    right: 15px !important;
+    top: 15px !important;
+}

@@ -1,0 +1,85 @@
+<div class="main-content">
+   <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+         <div class="header-body">
+            <div class="row align-items-center py-4">
+               <div class="col-lg-6 col-7">
+                  <h6 class="h2 text-white d-inline-block mb-0">Query/ Ticket Inbox</h6>
+                  <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item active"><a href="#">Query/ Ticket Inbox</a></li>
+
+                     </ol>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="container-fluid mt--6">
+      <div class="row">
+         <!-- Light table -->
+         <div class="col">
+            <div class="card">
+               <!-- Card header -->
+               <div class="card-header border-0">
+                  <h3 class="mb-0">Submit a Query/ Ticket
+                  </h3>
+               </div>
+               <div class="card-block">
+                  <div class="row">
+                     <div class="col-sm-6 offset-3">
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label>Select Department</label>
+                              <select class="form-control form-control-popup valid" name="dept"
+                                 [(ngModel)]="user.department" (change)="onSelectionChange(user.department)">
+                                 <option [selected]="user.department==''" disabled value=''>---Select Department---
+                                 </option>
+                                 <option *ngFor="let dept of depart" [value]="dept.dep">{{dept.dep}}</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label>Subject</label>
+                              <input type="text" name="subject" id="subject"
+                                 class="form-control valid form-control-popup" placeholder="Enter Subject"
+                                 #subject="ngModel" [(ngModel)]="user.subject" required>
+                           </div>
+                        </div>
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <label>Description</label>
+                              <textarea name="description" id="description"
+                                 class="form-control valid form-control-popup" #description="ngModel"
+                                 [(ngModel)]="user.description" placeholder="Enter Description....." required
+                                 rows=3></textarea><br>
+                           </div>
+                        </div>
+                        <div class="col-sm-12">
+                           <div class="form-group">
+                              <!-- <label>To Attach an Image</label> -->
+                              <image-upload class="supportCustomClass" [clearButtonCaption]="'Clear'"
+                                 [buttonCaption]="'Choose Image'" [max]=1 (change)="onImageChange($event)"
+                                 [extensions]="['jpg','png','gif']">
+                              </image-upload>
+                           </div>
+                        </div>
+                        <div class="col-sm-12">
+                           <button type="button"
+                              class="btn btn-primary flat-buttons waves-effect waves-button pull-right"
+                              (click)="onSubmitQuery()"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                              Submit</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  
+</div>

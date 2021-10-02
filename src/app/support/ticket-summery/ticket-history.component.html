@@ -1,0 +1,139 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card">
+        <div class="card-header card-name-bg">
+          Ticket History
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <!-- <div class="container text-center pt-5"> -->
+              <div class="row pricing-table">
+                <div class="col-md-12 box-center">
+
+                  <div id="frame" *ngIf="ticket['table']">
+                    <div id="sidepanel" class="leftArrow0">
+                      <div id="profile-chat">
+                        <div class="wrap">
+                          <img *ngIf="!common.pic" class="online" src="assets/img/myfunjo.png" alt="">
+                          <img *ngIf="common.pic" class="online" [src]="common.pic" alt="">
+                          <p *ngIf="common.allsecuremedata['membername']">{{common.allsecuremedata['membername']}}</p>
+                          <span class="toogle-side" id="leftArrow" (click)="leftArraowClick();"> <i
+                              class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
+
+                        </div>
+                      </div>
+                      <div id="search">
+
+                      </div>
+                      <div id="contacts">
+                        <ul>
+                          <li class="contact {{id==ticket.id?'active': ''}}" *ngFor="let ticket of ticket['table']">
+                            <div class="wrap" (click)="onClick(ticket)"> <span
+                                class="contact-status {{ticket.Status==1 ? 'busy' : 'online'}}"></span>
+                              <img src="assets/img/chat.png" alt="" />
+                              <div class="meta">
+                                <p class="preview left-subject"><b>{{ticket.subject}}</b></p>
+                                <p class="preview">{{ticket.Message}}</p>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div id="bottom-bar">
+                        <button id="addcontact" [routerLink]="['/support/submit-query']"><i
+                            class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Create Ticket</span>
+                        </button>
+                        <button id="settings" [routerLink]="['/support/ticket-summary']"><i class="fa fa-cog fa-fw"
+                            aria-hidden="true"></i> <span>Ticket Summary</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="content1 rightArrow100" id="Rightcontent" *ngIf="ticket">
+
+                      <div class="contact-profile">
+                        <i class="fa fa-chevron-circle-right contact-profile-icon" id="rightArrow"
+                          (click)="rightArraowClick();" aria-hidden="true"></i>
+                        <img src="assets/img/chat.png" alt="" />
+                        <p>Ticket ID : {{ticket['ticketno']}}</p>
+                        <div class="social-media"> <b>Status: </b><span
+                            class="badge-ticket {{ticket['status'] == 1 ? 'badge-danger' : 'badge-success'}}"
+                            style="font-size: 14px;"> {{ticket['status'] == 1 ? 'Close' : 'Open'}}</span>
+                        </div>
+                      </div>
+                      <div class="messages">
+                        <ul>
+                          <li class="{{chat.Sender == 'user'? 'replies' : 'sent'}}" *ngFor="let chat of chat['window']">
+                            <img src="assets/img/chat.png" alt="" />
+                            <p>
+                              {{chat.Message}}
+                              <span class="date_format">{{chat.ondate.slice(0,10)}}</span>
+                              <br>
+                              <i class="fa fa-paperclip view-paperclip" (click)="showimg(chat.filepath)"
+                                *ngIf="chat.attached==1" aria-hidden="true"></i>
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="message-input" *ngIf="chat['window'][0].Status == 0">
+                        <div class="row">
+                          <div class="col-md-8 col-sm-6">
+                            <div class="wrap">
+                              <input type="text" placeholder="Write your message..." [(ngModel)]="chatmessage">
+                              <button class="submit" (click)="updateChat()"><i class="fa fa-paper-plane"
+                                  aria-hidden="true"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-md-4 col-sm-6">
+                            <div class="wrap-attach">
+                              <image-upload class="chatCustomClass" (removed)="onRemoved($event)"
+                                (uploadStateChanged)="onUploadStateChanged($event)"
+                                [buttonCaption]="'Attach a Document'" [max]=1 (change)="onImageChange($event)"
+                                [extensions]="['jpg','png','gif']" (isPending)="disableSendButton($event)" *ngIf="flag">
+                              </image-upload>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===================Modal Box Only Show img==================================== -->
+<div class="modal" tabindex="-1" id="popup_img" role="dialog">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content popup_offer">
+      <button type="button" class="popup-close" data-dismiss="modal" aria-label="Close" (click)="closepopup()" style="position: absolute;
+    z-index: 999;background: #6a4df4;color: #fff;right: 0;padding: 3px 10px;
+    border-radius: 2px;"><span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body text-center">
+        <img *ngIf="!chatimage['img']" class="p-i-w" src="assets/img/logo.png">
+        <img *ngIf="chatimage['img']" class="p-i-w" [src]="chatimage['img']">
+      </div>
+    </div>
+  </div>
+</div>

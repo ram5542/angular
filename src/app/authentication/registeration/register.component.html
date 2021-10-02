@@ -1,0 +1,159 @@
+<div class="full-page login-page" filter-color="black">
+  <particles [style]="myStyle" [params]="myParams"></particles>
+  <div class="register-area section-padding-120-70">
+      <div class="container">
+          <div class="row align-items-center justify-content-between">
+              <div class="col-12 col-lg-4">
+                  <div class="register-thumbnail mb-50"><img class="img-responsive" src="assets/img/hero-3.png"
+                          alt=""></div>
+              </div>
+              <div class="col-12 col-lg-8">
+                  <div class="card register-card">
+                      <div class="card-body">
+                        <h1>Register</h1>
+                          <p>Didn't have an account?<a class="ml-2" [routerLink]="['/login']">Sign In</a></p>
+                          <form [formGroup]="register">
+                            <div class="login-box px-3">
+                              <div class="form-row">
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label"> Login ID </label>
+                                  <input type="text" id="userid" class="form-control"
+                                    (focus)="setUserNameOnFocus($event.target.value)" (blur)="getUserName($event.target.value,0)"
+                                    type="text" formControlName="userid">
+                                  <div *ngIf="!f.userid.errors && uservalue"
+                                    [ngStyle]="{'color': userflag === 1 ? 'green' : 'red'}">{{uservalue}}</div>
+            
+                                  <div *ngIf="submitted && f.userid.errors || f.userid.errors && f.userid.touched" class="errorMsg">
+                                    <div class="errorMsg" *ngIf="f.userid.errors.required">This field is required</div>
+                                    <div class="errorMsg" [hidden]="!f.userid.errors.pattern">Loginid should be alphanumeric. Space
+                                      and other symbols are not allowed.</div>
+                                  </div>
+                                </div>
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label">Name</label>
+                                  <input type="text" required="" class="form-control" formControlName="name">
+                                  <div *ngIf="submitted && f.name.errors || f.name.errors && f.name.touched" class="errorMsg">
+                                    <div *ngIf="f.name.errors.required"> Name is required </div>
+                                    <div [hidden]="!f.name.errors.pattern"> Accepts only character and number </div>
+                                  </div>
+                                </div>
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label"> Referral Id * </label>
+                                  <input type="text" id="sponserId" class="form-control" formControlName="sponsorId" (blur)="getUserName($event.target.value,1)"
+                                    (focus)="setUserNameOnFocus($event.target.value)">
+                                  <h6 class="float-right reg-flag" *ngIf="showname" style="font-size: 12px;"
+                                    [ngStyle]="{'color':showflag === 1 ? 'green' : 'red' }">{{showname}}</h6>
+                                  <div *ngIf="submitted && f.sponsorId.errors || f.sponsorId.touched && f.sponsorId.errors"
+                                    class="errorMsg">
+                                    <div *ngIf="f.sponsorId.errors.required"> Referral Id is required </div>
+                                  </div>
+                                </div>
+                                <!-- <div class="form-group label-floating col-md-6">
+                                  <label class="control-label"> Placement </label>
+                                  <select class="form-control text-dark" id="sel1" name="sellist1" formControlName="placement">
+                                    <option disabled class="text-muted" [selected]="hplacement == ''"> --select placement--
+                                    </option>
+                                    <option value="L" [selected]="hplacement == 'L' "> Left </option>
+                                    <option value="R" [selected]="hplacement == 'R'"> Right </option>
+                                  </select>
+                                  <div *ngIf="submitted && f.placement.errors || f.placement.touched && f.placement.errors"
+                                    class="errorMsg">
+                                    <div *ngIf="f.placement.errors.required"> This field is required </div>
+                                  </div>
+                                </div> -->
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label"> Country </label>
+                                  <select class="form-control js-select2" formControlName="countryName"
+                                    (change)="onChangeCountry($event.target.value)">
+                                    <option value='' disabled>--Select Country--</option>
+                                    <option *ngFor="let country of countries" [value]="country.CountryCode"> {{ country.CountryName }} </option>
+                                  </select>
+                                  <div *ngIf="submitted && f.countryName.errors || f.countryName.touched &&  f.countryName.errors"
+                                    class="errorMsg">
+                                    <div *ngIf="f.countryName.errors.required"> Country is required </div>
+                                  </div>
+                                </div>
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label">Mobile No </label>
+                                  <div class="input-group">
+                                    <input type="tel" class="form-control " id="phone" formControlName="mobile">
+                                    <!-- <div class="input-group-append">
+                                      <span class="input-group-text"> {{dialcode}} </span>
+                                    </div> -->
+                                  </div>
+                                  <div *ngIf="submitted && f.mobile.errors || f.mobile.touched && f.mobile.errors" class="errorMsg">
+                                    <div *ngIf="f.mobile.errors.required"> Mobile No is required </div>
+                                    <div [hidden]="!f.mobile.errors.patternMobileInvalid"> Mobile number should be minimum 8 and max
+                                      12
+                                      digits only </div>
+                                  </div>
+                                </div>
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label">Email Id</label>
+                                  <input type="email" required class="form-control" formControlName="email">
+                                  <div *ngIf="submitted && f.email.errors || f.email.touched &&  f.email.errors" class="errorMsg">
+                                    <div *ngIf="f.email.errors.required"> Email is required </div>
+                                    <div [hidden]="!f.email.errors.pattern"> Email is not valid type </div>
+                                  </div>
+                                </div>
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label">Password</label>
+                                  <input type="password" required class="form-control " id="password" formArrayName="password" formControlName="password">
+                                  <div *ngIf="submitted && f.password.errors || f.password.touched && f.password.errors"
+                                    class="errorMsg">
+                                    <div *ngIf="f.password.errors.required">This field is required</div>
+                                    <div *ngIf="f.password.errors.minlength || f.password.errors.maxlength">password length should
+                                      be
+                                      atleast 4 and maximum 20 digit </div>
+                                  </div>
+                                </div>
+                                <div class="form-group label-floating col-md-6">
+                                  <label class="control-label">Password Again</label>
+                                  <input type="password" class="form-control" required id="confirm_password" formControlName="confirmPassword">
+                                  <div
+                                    *ngIf="submitted && f.confirmPassword.errors || f.confirmPassword.touched  && f.confirmPassword.errors "
+                                    class="errorMsg">
+                                    <div *ngIf="f.confirmPassword.errors.required"> Confirm Password is required </div>
+                                    <div *ngIf="f.confirmPassword.errors.mustMatch">The password and confirmation password do not
+                                      match.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary w-100" (click)="onRegister()"
+                                [disabled]="register.invalid || register.pristine">Register</button>                             
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="reg_data_validate"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content flat">
+      <div class="modal-header">
+        <h3 class="title">CONGRATULATIONS !!!!!</h3>
+      </div>
+      <div class="modal-body">
+        <p style="text-align:center; font-size: 22px;">Welcome to My Funjo.....</p>
+        <p style="text-align:center; font-size: 20px;" *ngIf="loginID">Your Login Id {{loginID}}</p>
+        <p style="text-align:center; font-size: 20px;" *ngIf="pass">Your Login Password {{pass}}</p>
+        <p style="text-align:center; font-size: 20px;">Thanks for registering with us.Your login credentials are sent to
+          your registered Email address. </p>
+
+        <div style="text-align: center;"></div>
+      </div>
+      <div class="modal-footer custom_modal_footer">
+        <div class="form-group row">
+          <button class="btn register_btn" type="submit" (click)="yesPopup();">
+            Go To Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

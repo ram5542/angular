@@ -1,0 +1,362 @@
+<div class="main-content">
+  <div class="header bg-primary">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Edit Profile</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active"><a href="#">Edit Profile</a></li>
+
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 m-b-30">
+        <div class="card">
+          <div class="card-content p-4">
+            <h4 class="card-title">Edit Profile
+            </h4>
+            <div class="alert alert-danger _alertsuccess" style="padding: 10px 10px 4px 10px;" *ngIf="profileData['yocoinaddress'] == ''">
+              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                <i class="material-icons">close</i>
+              </button>
+              <span>
+                <p>Please Update Your Yo-Plex Address First!</p>
+              </span>
+            </div>
+            <form [formGroup]="profileForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">User ID:</label>
+                    <input type="text" class="form-control" [value] = "profileData1['userid']" formControlName="userid">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Sponsor ID:</label>
+                    <input type="text" class="form-control" [value]="this.profileData1['sponsorid']" formControlName="sponsorid">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">User Name:</label>
+                    <input type="text" class="form-control" [value]="this.profileData1['username']" formControlName="username">
+                  </div>
+                </div>
+                <!-- <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="control-label">Last Name:</label>
+                    <input type="text" class="form-control" [value]="this.profileForm['last']" formControlName="last">
+                  </div>
+                </div> -->
+                <div class="col-md-6 edit-dob">
+                  <!-- <mat-form-field>
+                           <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                           <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+                           <mat-datepicker #picker></mat-datepicker>
+                           </mat-form-field> 
+                            <my-date-picker name="mydate"  [(ngModel)]="dob" [options]="myDatePickerOptions" (dateChanged)="onDateChanged(dob)" required></my-date-picker> -->
+
+
+
+                  <label class="control-label">Date Of Birth:</label>
+                     <div class="input-group">
+                    <input *ngIf="!flagradio" type="text" class="form-control" [value]="this.profileData1['dob']" formControlName="dob">
+                    <button *ngIf="!flagradio" class="btn btn-outline-warning" type="button" (click)="onchangeradio()" id="button-addon2"><i class="fas fa-angle-down"></i></button>
+                    <input *ngIf="flagradio" type="date" placeholder = "select Date" class="form-control" [value]="this.profileData1['dob']" formControlName="dob">
+                 
+                  </div>
+                  <!-- <ng-container *ngIf="this.profileData['dob'] == ''">
+                              <div class="edit-dob-cal">
+                                 <input matInput [matDatepicker]="fromdate" placeholder="Date Of Birth"
+                                    [(ngModel)]="dob" name="dob" (dateChanged)="onDateChanged(dob)">
+                              </div>
+                              <mat-datepicker-toggle matSuffix [for]="fromdate">
+                              </mat-datepicker-toggle>
+                              <mat-datepicker #fromdate [startView]="'month'">
+                              </mat-datepicker>
+                           </ng-container>
+
+                           <ng-container *ngIf="this.profileData['dob'] != ''">
+                              <div class="edit-dob-cal">
+                                 <input type="date" class="form-control"  [(ngModel)]="profileData['dob']" name="dob">
+                              </div>
+                           </ng-container> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Email Id:</label>
+                    <input type="text" class="form-control" [value]="this.profileData1['email']" formControlName="email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Mobile Number:</label>
+                    <input type="text" class="form-control" [value]="this.profileData1['mobile']" formControlName="mobile">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 edit-gender">
+                  <!-- <mat-form-field class="edit-gender-cal">
+                              <label>Gender</label>
+                              <mat-select [(ngModel)]="profileData['gender']" [ngModelOptions]="{standalone: true}">
+                                 <mat-option *ngFor="let o of valueOptions" value="{{allValues[o]}}">{{o}}</mat-option>
+                              </mat-select>
+                           </mat-form-field> -->
+                  <label>Gender</label>
+                  <select class="form-control js-select2" formControlName="gender" [value]="this.profileData1['gender']">
+
+                     <!-- <option>Select Gender</option> -->
+                     <option *ngFor="let o of valueOptions" [value]="allValues[o]">{{o}}</option>
+                   </select>
+                  <!-- <div class="input-group">
+                    <input *ngIf="!flagradio" type="text" class="form-control" [value]="this.profileForm['gender']" formControlName="gender">
+                    <button *ngIf="!flagradio" class="btn btn-outline-warning" type="button" (click)="onchangeradio()" id="button-addon2"><i class="fas fa-angle-down"></i></button>
+                  </div> -->
+                  <!-- <select *ngIf="flagradio" class="form-control js-select2" [(ngModel)]="profileData['gender']" [ngModelOptions]="{standalone: true}">
+                    <option value='' disabled>--Select Gender--</option>
+                    <option *ngFor="let o of valueOptions" [value]="allValues[o]"> {{o}} </option>
+
+                  </select> -->
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">City:</label>
+
+                    <input type="text" class="form-control" [value]="this.profileData1['city']" formControlName="city">
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Country:</label> -->
+                <!-- <input type="text" class="form-control" [value]="this.profileForm['country']" formControlName="country"> -->
+                <!-- </div>
+                </div> -->
+                <div class="form-group label-floating col-md-6">
+                  <label class="control-label"> Country </label>
+
+                  <select class="form-control js-select2" formControlName="country" [value]="this.profileData1['country']">
+
+                    <!-- <option>Select Country</option> -->
+                    <option *ngFor="let country of countries">{{country.CountryName}}</option>
+                  </select>
+                </div>
+                <div class="form-group label-floating col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Funjo Address:</label>
+                    <input class="form-control" rows="2" [value]="this.profileData1['funjoaddress']" formControlName="funjoaddress">
+                  </div>
+                </div>
+                <div class="form-group label-floating col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Touch Token Address (BSC Address):</label>
+                    <input class="form-control" rows="2" [value]="this.profileData1['tokenaddress']" formControlName="tokenaddress">
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label class="control-label">Funjo Address:</label>
+                              <input class="form-control" rows="2" name="funjoaddress"
+                                 [(ngModel)]="profileData['funjoaddress']">
+                           </div>
+                        </div>
+                     </div> -->
+              <!-- <div class="row">
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label class="control-label">USDT Address:</label>
+                              <input type="text" class="form-control" name="usdtaddress"
+                                 [(ngModel)]="profileData['usdtaddress']">
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label class="control-label">YOP Address:</label>
+                              <input type="text" class="form-control" name="yopaddress"
+                                 [(ngModel)]="profileData['slcaddress']">
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label class="control-label">EthCoin Address:</label>
+                              <input type="text" class="form-control" name="ethaddress"
+                                 [(ngModel)]="profileData['ethaddress']">
+                           </div>
+                        </div>
+                     </div> -->
+              <div class="row">
+                <!-- <div class="col-md-6">
+                                 <a style="color: brown;" href="" target="_blank" class="pull-left">DOWNLOAD ANDROID WALLET</a>
+                           </div>
+                           <div class="col-md-6"> 
+                                 <a style="color: brown;" href="" target="_blank" class="pull-right">CREATE WALLET ON YOCHAIN</a>
+                           </div> -->
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary" (click)="onUpdate()">Update
+                    Profile</button>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 m-b-30">
+        <div class="card card-profile p-4" *ngIf="profileData1">
+          <div class="card-avatar">
+            <img *ngIf="!profileData1['profilepic']" src="assets/img/avatars/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title="Your Image" data-toggle="modal" data-target="#myModal" style="cursor: pointer;" />
+            <img *ngIf="profileData1['profilepic']" [src]="'assets/img/avatars/'+profileData1['profilepic']+'.jpg'" class="picture-src" id="wizardPicturePreview" title="Your Image" data-toggle="modal" data-target="#myModal" style="cursor: pointer;" />
+          </div>
+          <div class="card-content">
+            <!-- <h4 class="card-title">{{profileData1['firstname'] + profileData['lastname']}}</h4> -->
+            <!-- <p class="description">
+                     <strong>Main Wallet :</strong> {{mainwallet?.wallet}}
+                  </p> -->
+            <p class="description">
+              <strong>User Name :</strong> {{profileData1['username']}}
+            </p>
+            <p class="description">
+              <strong>User Id :</strong> {{profileData1['userid']}}
+            </p>
+            <!-- <p class="description">
+                     <strong>Date of Birth :</strong> {{profileData1['Date Of Birth']}}
+                  </p> -->
+            <!-- <p class="description">
+                     <strong>Date of Birth :</strong> {{profileData1['Date Of Birth']}}
+                  </p> -->
+            <p class="description">
+              <strong>Sponsor Id :</strong> {{profileData1['sponsorid']}}
+            </p>
+            <p class="description">
+              <strong>Email :</strong> {{profileData1['email']}}
+            </p>
+            <p class="description">
+              <strong>Country :</strong> {{profileData1['country']}}
+            </p>
+            <p class="description">
+              <strong>Mobile Number :</strong> {{profileData1['mobile']}}
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="row no-gutters text-center p-b-10">
+              <div class="col- mr-2">
+                <a href="https://web.whatsapp.com/" target="_blank">
+                  <h3 class=" mdi"><i class="fab fa-whatsapp"></i></h3>
+                  <!-- <div class="text-overline">whatsapp</div> -->
+
+                </a>
+              </div>
+              <div class="col- mr-2">
+                <a href="https://web.skype.com/" target="_blank">
+                  <h3 class=" mdi"><i class="fab fa-skype"></i></h3>
+                  <!-- <div class="text-overline">skype</div> -->
+
+                </a>
+
+              </div>
+              <div class="col- mr-2">
+                <a href="https://web.telegram.org/#/login" target="_blank">
+                  <h3 class=" mdi"> <i class="fab fa-telegram-plane"></i></h3>
+                  <!-- <div class="text-overline">instagram</div> -->
+
+                </a>
+
+              </div>
+              <div class="col- mr-2">
+                <a href="https://facebook.com/" target="_blank">
+                  <h3 class=" mdi"> <i class="fab fa-facebook-f"></i></h3>
+                  <!-- <div class="text-overline">facebook</div> -->
+
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Choose your Avatar!</h3>
+      </div>
+      <div class="modal-body">
+        <div class="card-content">
+          <ul class="nav nav-pills nav-pills-warning">
+            <li class="active">
+              <a href="#board1" data-toggle="tab" style="text-transform: capitalize;">Animated</a>
+            </li>
+            <li>
+              <a href="#board2" data-toggle="tab" style="text-transform: capitalize;">Celebrities</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="board1">
+              <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let pic of profilePics">
+                  <img id="img-{{pic}}" src="assets/img/avatars/{{pic}}.jpg" class="img-thumbnail" (click)="chosePic(pic);" style="margin: 10px auto; cursor: pointer;" />
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="board2">
+              <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let pic of celebPics">
+                  <img id="img-{{pic}}" src="assets/img/avatars/{{pic}}.jpg" class="img-thumbnail" (click)="chosePic(pic);" style="margin: 10px auto; cursor: pointer;" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [disabled]="!chosen" (click)="savePic()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModal3Label">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 20px;">&times;</span></button>
+        <h6 class="modal-title smallcap" id="myModal3Label">OTP has been sent to your registered Email Id </h6>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="otpTransfer" style="overflow: hidden;">
+          <div class="form-group label-floating">
+            <label class="control-label">Enter OTP...</label>
+            <input type="text" class="form-control" formControlName="otpVal">
+          </div>
+          <!-- <button class="btn btn-fill btn-primary pull-left btn-sm" [disabled]="!otpTransfer.value.otpVal" (click)="sendOTP()">Submit OTP</button> -->
+          <!-- <button class="btn btn-fill btn-default pull-right btn-sm" [disabled]="resendBtn" (click)="resendOTP()">Resend OTP</button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+.register-button {
+    display: block;
+    margin-top: 40px;
+}
+i#sponserWrong {
+    font-size: 16px;
+    color: red;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+i#sponserCorrrect {
+    font-size: 16px;
+    color: green;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+#Content img, img.scale-with-grid {
+    max-width: 100%;
+    height: auto;
+}
+img#sponserLoader {
+    width: 40px;
+    height: auto;
+    position: absolute;
+    right: 12px;
+    bottom: -4px;
+}
+select option[disabled] { color: #fff !important; background: #000; }
+/*css style for IE*/
+select[disabled='disabled']::-ms-value {
+    color: #fff;
+}
+/*Specific to chrome and firefox*/
+select[disabled='disabled'] {
+    color: #fff;
+}
+.edit-form {
+    left: 26%;
+    width: 50%;
+}
+input:disabled {
+    background: #000;
+    color: #fff;
+  }
+
+  .register_btn{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+  }
+
+  .custom_modal_footer{
+    justify-content: center !important;
+  }
+  .login-screen {
+    position: relative;
+    background: #fffefc;
+    border: 1px solid #e4dacd;
+    border-radius: 4px;
+    margin: 60px auto;
+    min-width: 100%;
+    max-width: 100%;
+}
+.errorMsg{ color: red;}
+#registerModal .modal-dialog .modal-content {
+    background: url(src/assets/img/user-bg.jpg) no-repeat center fixed !important;
+}
